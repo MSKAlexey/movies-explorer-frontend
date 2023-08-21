@@ -1,6 +1,6 @@
 import { Link, useLocation, Routes, Route } from 'react-router-dom';
 
-import logoHeader from '../images/logo.svg';
+import logo from '../../images/logo.svg';
 
 export default function Header({ loggedIn, logOut, userData }) {
  const email = userData;
@@ -16,8 +16,8 @@ export default function Header({ loggedIn, logOut, userData }) {
    >
     <img
      className='header__logo'
-     src={logoHeader}
-     alt='Надпись на латинице: Место и Россия'
+     src={logo}
+     alt='Логотип'
     />
    </Link>
 

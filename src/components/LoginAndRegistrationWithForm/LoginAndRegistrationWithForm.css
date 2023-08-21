@@ -1,0 +1,48 @@
+.LoginAndRegistrationWithForm {
+  display: flex;
+  flex-wrap: wrap;
+  /* align-content: space-around; */
+  height: 100%;
+  /* justify-content: center; */
+}
+
+.LoginAndRegistrationWithForm__container {
+  /* border-radius: 12px; */
+  /* box-sizing: border-box; */
+  display: flex;
+  flex-direction: column;
+  /* padding: 25px 22px; */
+  position: relative;
+}
+
+.LoginAndRegistrationWithForm__button {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* padding: 25px 22px; */
+  position: relative;
+  background: #4285f4;
+}
+
+.LoginAndRegistrationWithForm__logo {
+  min-width: 38px;
+  min-height: 38px;
+  display: flex;
+  margin: 0 auto;
+  padding: 56px 0 0 0;
+}
+
+.LoginAndRegistrationWithForm__title {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}

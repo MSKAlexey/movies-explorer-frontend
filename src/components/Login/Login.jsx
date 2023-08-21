@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import LoginAndRegistrationWithForm from './LoginAndRegistrationWithForm';
+import LoginAndRegistrationWithForm from '../LoginAndRegistrationWithForm/LoginAndRegistrationWithForm';
+import './Login.css'
 
 export default function Login({ handelLoginSubmit, /* errorMessage */ }) {
 
@@ -30,18 +31,17 @@ export default function Login({ handelLoginSubmit, /* errorMessage */ }) {
       onSubmit={handleSubmit}
     >
       <input
-        className='login__input'
+        className='Login__input'
         placeholder='email@mail.com'
         type='email'
         name='email'
         minLength='5'
-        // maxLength='15'
         required
         onChange={handleChange}
       />
       <span id="input-name-error" className="error">{/* errorMessage */}</span>
       <input
-        className='login__input'
+        className='Login__input'
         placeholder='••••••••••'
         type='password'
         name='password'

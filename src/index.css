@@ -3,11 +3,6 @@
 /* Подключаем шрифты */
 @import url(./vendor/fonts.css);
 
-/* Блок page */
-@import url(./blocks/page/page.css);
-@import url(./blocks/page/__container/page__container.css);
-/* Конец блока page */
-
 /* opacity */
 @import url(./blocks/opacity/opacity.css);
 /* Конец opacity*/

@@ -1,0 +1,14 @@
+.Login__input {
+  border: none;
+  border-bottom: 1px solid #424242;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+  margin: 0;
+  padding: 0 0 8px 0;
+  min-width: 260px;
+  background-color: black;
+}

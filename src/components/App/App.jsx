@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
-import Register from './Register';
-import Login from './Login';
-import PopupWithForm from './PopupWithForm';
-import EditProfilePopup from './EditProfilePopup';
-import EditAvatarPopup from './EditAvatarPopup';
-import AddPlacePopup from './AddPlacePopup';
-import ImagePopup from './ImagePopup';
-import InfoTooltip from './InfoTooltip';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
-import { ProtectedRoute } from './ProtectedRoute';
-import api from '../utils/Api';
-import * as auth from '../utils/Auth';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import Register from "../Register/Register";
+import Login from "../Login/Login";
+import PopupWithForm from "../PopupWithForm";
+import EditProfilePopup from "../EditProfilePopup";
+import EditAvatarPopup from "../EditAvatarPopup";
+import AddPlacePopup from "../AddPlacePopup";
+import ImagePopup from "../ImagePopup";
+import InfoTooltip from "../InfoTooltip";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { ProtectedRoute } from "../ProtectedRoute";
+import api from "../../utils/Api";
+import * as auth from "../../utils/Auth";
 
 export default function App() {
-
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -29,22 +29,27 @@ export default function App() {
   const [cards, setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({ email: '' });
+  const [userData, setUserData] = useState({ email: "" });
   // const [errorMessage, setErrorMessage] = useState('');
+
+  // скрыть или показать заголовок и подвал
+/*   const headerHideOrShow = ["/", "/movies", "/saved-movies", "/profile"];
+  const footerHideOrShow = ["/", "/movies", "/saved-movies"]; */
 
   const handleLogin = (email) => {
     setLoggedIn(true);
     setUserData(email);
-  }
+  };
   // проверка токена
   function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem("jwt");
     // debugger
     if (jwt) {
-      auth.getContent()
-        .then(user => {
+      auth
+        .getContent()
+        .then((user) => {
           handleLogin(user.email);
-          navigate('/');
+          navigate("/");
         })
         .catch(console.log);
     }
@@ -52,7 +57,7 @@ export default function App() {
   // проверка токена при ребуте страницы
   useEffect(() => {
     tokenCheck();
-  }, [])
+  }, []);
   // открытия попапов
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -65,7 +70,7 @@ export default function App() {
   }
   function handleCardClick(card) {
     setImagePopupOpen(true);
-    setselectedCard(card)
+    setselectedCard(card);
   }
   // закрытие всех попапов
   function closeAllPopups() {
@@ -77,61 +82,66 @@ export default function App() {
   }
   // ставим лайк картинке, середечко становиться черного цвета
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i === currentUser._id);
-    api.changeLikeCardStatus(card._id, !isLiked)
+    const isLiked = card.likes.some((i) => i === currentUser._id);
+    api
+      .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        setCards((state) => state.map(c => c._id === card._id ? newCard : c));
+        setCards((state) =>
+          state.map((c) => (c._id === card._id ? newCard : c))
+        );
       })
       .catch(console.log);
   }
   // удаляем карточку, возможно удалять только карточки которые сами создали
   function handleCardDelete(card) {
     // setDeleteCardPopupOpen(true);
-    api.deleteCard(card._id)
+    api
+      .deleteCard(card._id)
       .then(() => {
-        setCards((state) => state.filter(c => c._id !== card._id));
+        setCards((state) => state.filter((c) => c._id !== card._id));
       })
       .catch(console.log);
   }
   // добавляем новую карточку, оба поля обязательны для заполнения
   function handleAddPlaceSubmit({ name, link }) {
-    api.addCard({ name, link })
-      .then(
-        (newCard) => {
-          setCards([newCard, ...cards]);
-          closeAllPopups();
-        })
+    api
+      .addCard({ name, link })
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
       .catch(console.log);
   }
   // редактируем имя и профессию профиля
   function handleUpdateUser(data) {
-    api.changeUserInfo(data)
-      .then(
-        (data) => {
-          setCurrentUser(data);
-          closeAllPopups();
-        })
+    api
+      .changeUserInfo(data)
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
       .catch(console.log);
   }
   // изменяем картинку аватара пользователя
   function handleUpdateAvatar(data) {
-    api.changeUserAvatar(data)
-      .then(
-        (data) => {
-          setCurrentUser(data);
-          closeAllPopups();
-        })
+    api
+      .changeUserAvatar(data)
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
       .catch(console.log);
   }
   // субмит формы регистрации
   function handelRegisterSubmit({ email, password }) {
-    auth.register({ email, password })
+    auth
+      .register({ email, password })
       .then(() => {
         setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);
-        navigate('/sign-in');
+        navigate("/sign-in");
       })
-      .catch(err => {
+      .catch((err) => {
         setIsInfoTolltip(false);
         // setErrorMessage(err);   При переключении страниц регистрации/логин ошибка остается старая, то есть с не удачной попытки регистрации бует отображатся на странице логина
         console.log(err);
@@ -140,20 +150,21 @@ export default function App() {
   }
   // субмит формы входа
   function handelLoginSubmit({ email, password }) {
-    auth.authorize({ email, password })
-      .then(data => {
+    auth
+      .authorize({ email, password })
+      .then((data) => {
         if (data) {
-          localStorage.setItem('jwt', data.token);
+          localStorage.setItem("jwt", data.token);
           handleLogin(email);
-          navigate('/main');
+          navigate("/main");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         setIsInfoTolltip(false);
         setIsRegisterPopupOpen(true);
         // setErrorMessage(err);
         console.log(err);
-      })
+      });
   }
   // хук для начальной загрузки карточек с сервера и получение имя и профессии пользователя профиля. проверка на присутствие jwt токена в локальном хранилище
   useEffect(() => {
@@ -174,23 +185,15 @@ export default function App() {
   }
 
   return (
-
     <CurrentUserContext.Provider value={currentUser}>
+      <div className="App">
+        <div className="App__container">
 
-      <div className='page'>
-
-        <div className='page__container'>
-
-          <Header
-            loggedIn={loggedIn}
-            logOut={logOut}
-            userData={userData}
-          />
+          {/* <Header loggedIn={loggedIn} logOut={logOut} userData={userData} /> */}
 
           <Routes>
-
             <Route
-              path='/'
+              path="/"
               element={
                 <ProtectedRoute
                   loggedIn={loggedIn}
@@ -207,31 +210,29 @@ export default function App() {
             />
 
             <Route
-              path='/sign-in'
-              element={<Login
-                handelLoginSubmit={handelLoginSubmit}
-              // errorMessage={errorMessage}
-              />}
+              path="/sign-in"
+              element={
+                <Login
+                  handelLoginSubmit={handelLoginSubmit}
+                  // errorMessage={errorMessage}
+                />
+              }
             />
 
             <Route
-              path='/sign-up'
+              path="/sign-up"
               element={
                 <Register
                   handelRegisterSubmit={handelRegisterSubmit}
-                // errorMessage={errorMessage}
-                />}
+                  // errorMessage={errorMessage}
+                />
+              }
             />
 
-            <Route
-              path='*'
-              element={<Navigate to='/' replace />}
-            />
-
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
 
-          <Footer />
-
+          {/* <Footer /> */}
         </div>
 
         {/* редактирование профиля */}
@@ -256,9 +257,9 @@ export default function App() {
         />
         {/* удаление карточки */}
         <PopupWithForm
-          name={'remove'}
-          title={'Вы уверены?'}
-          buttonText={'Да'}
+          name={"remove"}
+          title={"Вы уверены?"}
+          buttonText={"Да"}
         />
         {/* открытие картинки */}
         <ImagePopup
@@ -273,7 +274,6 @@ export default function App() {
           statusRegister={isInfoTolltip}
         />
       </div>
-
     </CurrentUserContext.Provider>
   );
 }

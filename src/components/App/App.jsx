@@ -33,7 +33,7 @@ export default function App() {
   // const [errorMessage, setErrorMessage] = useState('');
 
   // скрыть или показать заголовок и подвал
-/*   const headerHideOrShow = ["/", "/movies", "/saved-movies", "/profile"];
+  /*   const headerHideOrShow = ["/", "/movies", "/saved-movies", "/profile"];
   const footerHideOrShow = ["/", "/movies", "/saved-movies"]; */
 
   const handleLogin = (email) => {
@@ -188,24 +188,31 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="App__container">
-
           {/* <Header loggedIn={loggedIn} logOut={logOut} userData={userData} /> */}
 
           <Routes>
             <Route
               path="/"
               element={
-                <ProtectedRoute
-                  loggedIn={loggedIn}
-                  element={Main}
-                  onEditAvatar={handleEditAvatarClick}
-                  onEditProfile={handleEditProfileClick}
-                  onAddPlace={handleAddPlaceClick}
-                  onCardClick={handleCardClick}
-                  onCardLike={handleCardLike}
-                  cards={cards}
-                  onCardDelete={handleCardDelete}
-                />
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    logOut={logOut}
+                    userData={userData}
+                  />
+                  <ProtectedRoute
+                    loggedIn={loggedIn}
+                    element={Main}
+                    onEditAvatar={handleEditAvatarClick}
+                    onEditProfile={handleEditProfileClick}
+                    onAddPlace={handleAddPlaceClick}
+                    onCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                    cards={cards}
+                    onCardDelete={handleCardDelete}
+                  />
+                  <Footer />
+                </>
               }
             />
 

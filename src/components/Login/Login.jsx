@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import logo from "../../images/logo.svg";
 
 export default function Login({ handelLoginSubmit /* errorMessage */ }) {
   const [formValue, setFormValue] = useState({
@@ -24,52 +25,56 @@ export default function Login({ handelLoginSubmit /* errorMessage */ }) {
   }
 
   return (
-    <form className="LoginAndRegistrationWithForm" onSubmit={handleSubmit}>
-      <div className="LoginAndRegistrationWithForm__container">
-        <h1 className="LoginAndRegistrationWithForm__title">{"Вход"}</h1>
+    <div className="Login__container">
+      <Link className="Login__logo-link" to="/">
+        <img className="Login__logo" src={logo} alt="Логотип" />
+      </Link>
+      <h1 className="Login__title">{"Рады видеть!"}</h1>
 
-        <input
-          className="Login__input"
-          placeholder="email@mail.com"
-          type="email"
-          name="email"
-          minLength="5"
-          required
-          onChange={handleChange}
-        />
-        <span id="input-name-error" className="error">
-          {/* errorMessage */}
-        </span>
-        <input
-          className="Login__input"
-          placeholder="••••••••••"
-          type="password"
-          name="password"
-          minLength="6"
-          maxLength="15"
-          required
-          onChange={handleChange}
-        />
-        <span id="input-name-error" className="error">
-          {/* errorMessage */}
-        </span>
-
-        <button
-          type="submit"
-          name="button"
-          className="LoginAndRegistrationWithForm__button cursor"
-        >
+      <form className="Login__form " onSubmit={handleSubmit}>
+        <div className="Login__form-input">
+          <span className="Login__title-input">E-mail</span>
+          <input
+            className="Login__input"
+            placeholder="pochta@yandex.ru|"
+            type="email"
+            name="email"
+            minLength="5"
+            required
+            onChange={handleChange}
+          />
+          <span id="input-name-error" className="error">
+            {/* errorMessage */}
+          </span>
+        </div>
+        <div className="Login__form-input">
+          <span className="Login__title-input">Пароль</span>
+          <input
+            className="Login__input"
+            placeholder="••••••••••"
+            type="password"
+            name="password"
+            minLength="6"
+            maxLength="15"
+            required
+            onChange={handleChange}
+          />
+          <span id="input-name-error" className="error">
+            {/* errorMessage */}
+          </span>
+        </div>
+        <button type="submit" name="button" className="Login__button cursor">
           {"Войти"}
         </button>
         {
-          <p className="login__register-text">
-            Уже зарегистрированы?{" "}
-            <Link className="login__register-link" to="/sign-up">
-              Войти
+          <p className="Login__text">
+            Ещё не зарегистрированы?{" "}
+            <Link className="Login__link" to="/sign-up">
+              Регистрация
             </Link>
           </p>
         }
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }

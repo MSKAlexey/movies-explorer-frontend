@@ -55,7 +55,7 @@ export default function Register({ handelRegisterSubmit /* errorMessage */ }) {
           <span className="Register__title-input">E-mail</span>
           <input
             className="Register__input"
-            placeholder="email@mail.com"
+            placeholder="pochta@yandex.ru|"
             type="email"
             name="email"
             minLength="5"

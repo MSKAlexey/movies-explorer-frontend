@@ -188,11 +188,9 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="App__container">
-          {/* <Header loggedIn={loggedIn} logOut={logOut} userData={userData} /> */}
-
           <Routes>
             <Route
-              path="/"
+              path="/123"
               element={
                 <>
                   <Header
@@ -236,10 +234,23 @@ export default function App() {
               }
             />
 
+            <Route
+              path="/"
+              element={
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    logOut={logOut}
+                    userData={userData}
+                  />
+                  <Main />
+                  <Footer />
+                </>
+              }
+            />
+
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-
-          {/* <Footer /> */}
         </div>
 
         {/* редактирование профиля */}

@@ -1,0 +1,71 @@
+.AboutProject {
+}
+
+.AboutProject__container {
+  width: 284px;
+  margin: 0 auto;
+}
+
+.AboutProject__title {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #424242;
+}
+
+.AboutProject__subtitle {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.72px;
+}
+
+.AboutProject__text {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.AboutProject__period{
+
+}
+
+.AboutProject__back-end{
+
+}
+
+.AboutProject__back-end_week{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+
+}
+
+.AboutProject__back-end_name{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+
+}
+
+.AboutProject__front-end{
+
+}
+
+.about-project__front-end_week{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+
+}
+
+.about-project__front-end_name{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+
+}

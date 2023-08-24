@@ -1,0 +1,58 @@
+.Techs{
+
+}
+
+.Techs__container{
+
+}
+
+.Techs__title{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.72px;
+}
+
+.Techs__subtitle{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #FFF;
+  text-align: center;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.2px;
+}
+
+.Techs__text{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #FFF;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 145.455% */
+  letter-spacing: -0.44px;
+}
+
+.Techs__table{
+
+}
+
+.Techs__column{
+
+}
+
+.Techs__ctechnology{
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #FFF;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.48px;
+}

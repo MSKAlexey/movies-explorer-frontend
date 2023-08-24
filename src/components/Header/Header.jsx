@@ -1,4 +1,5 @@
 import { Link, useLocation, Routes, Route } from 'react-router-dom';
+import './Header.css'
 
 import logo from '../../images/logo.svg';
 
@@ -7,15 +8,20 @@ export default function Header({ loggedIn, logOut, userData }) {
  const location = useLocation();
  const linkText = location.pathname === '/sign-in' ? 'Регистрация' : 'Войти';
  const logOutText = loggedIn ? 'Выйти' : linkText;
+ const currentLocation = useLocation();
 
  return (
-  <header className='header'>
+  <header
+  className={`Header Header_background-color_${
+    currentLocation.pathname === '/' ? 'landing' : 'main'
+  }`}
+>
 
    <Link
     href='/'
    >
     <img
-     className='header__logo'
+     className='Header__logo'
      src={logo}
      alt='Логотип'
     />

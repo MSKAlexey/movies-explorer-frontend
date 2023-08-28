@@ -28,13 +28,13 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(true);
+  const [isOpenMenu, setOpenMenu] = useState(false);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
   // const [errorMessage, setErrorMessage] = useState('');
 
-  // скрыть или показать заголовок и подвал
-  /*   const headerHideOrShow = ["/", "/movies", "/saved-movies", "/profile"];
-  const footerHideOrShow = ["/", "/movies", "/saved-movies"]; */
+  const handleMenuClick = () => setOpenMenu(!isOpenMenu);
 
   const handleLogin = (email) => {
     setLoggedIn(true);
@@ -240,8 +240,8 @@ export default function App() {
                 <>
                   <Header
                     loggedIn={loggedIn}
-                    logOut={logOut}
-                    userData={userData}
+                    isOpenMenu={isOpenMenu}
+                    onClickMenu={handleMenuClick}
                   />
                   <Main />
                   <Footer />

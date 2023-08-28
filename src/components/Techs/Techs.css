@@ -1,58 +1,79 @@
-.Techs{
-
+.Techs__container {
+  width: 292px;
+  margin: 0 auto;
+  padding: 140px 0 0 0;
 }
 
-.Techs__container{
-
+.Techs__title_container {
+  width: 284px;
+  margin: 0 auto;
 }
 
-.Techs__title{
+.Techs__title {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #FFF;
+  color: #fff;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.72px;
+  margin: 0;
+  padding: 0 0 26px 0;
+  border-bottom: 1px solid #000;
 }
 
-.Techs__subtitle{
+.Techs__subtitle {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -1.2px;
+  margin: 0;
+  padding: 62px 0 0 0;
 }
 
-.Techs__text{
+.Techs__text {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 145.455% */
   letter-spacing: -0.44px;
+  padding: 24px 0 0 0;
+  margin: 0;
 }
 
-.Techs__table{
-
+.Techs__table {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 84px);
+  gap: 12px;
+  padding: 50px 0 0 0;
+  margin: 0;
+  justify-content: center;
 }
 
-.Techs__column{
-
+.Techs__column {
 }
 
-.Techs__ctechnology{
+.Techs__ctechnology {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.48px;
+  border-radius: 10px;
+  background: #303030;
+  padding: 20px 0 20px 0;
+  margin: 0;
+  /* width: 84px; */
+  /* height: 57px; */
 }

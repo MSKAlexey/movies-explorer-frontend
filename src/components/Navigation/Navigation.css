@@ -1,0 +1,29 @@
+.Navigation__container {
+  padding: 12px 14px 0 0;
+  margin: 0;
+}
+
+.Navigation__list {
+  list-style: none;
+  display: flex;
+}
+
+.Navigation__link {
+  text-decoration: none;
+  color: #fff;
+  text-align: right;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 20px 14px 0 0;
+  margin: 0 0 0 0;
+}
+
+.Navigation__link_sign-in {
+  border-radius: 3px;
+  background: #3ddc84;
+  padding: 8px 12px 6px 12px;
+  margin: 0;
+}

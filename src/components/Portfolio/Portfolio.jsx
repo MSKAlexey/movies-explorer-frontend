@@ -1,10 +1,10 @@
-import "./AboutMe.css";
+import "./Portfolio.css";
 import I from "../../images/I.jpg";
 
-export default function AboutMe() {
+export default function Portfolio() {
   return (
-    <section className="AboutMe">
-      <div className="AboutMe__container">
+    <section className="Portfolio">
+      <div className="Portfolio__container">
         <h2 className="AboutMe__title">Студент</h2>
         <img className="AboutMe__photo" src={I} alt="Дёмин Алексей" />
         <h3 className="AboutMe__subtitle">Алексей</h3>
@@ -18,6 +18,8 @@ export default function AboutMe() {
         </p>
 
         <h3 className="AboutMe__git">Github</h3>
+
+        <h3 className="AboutMe__portfolio">Портфолио</h3>
       </div>
     </section>
   );

@@ -19,16 +19,16 @@ export default function AboutProject() {
           У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
           соблюдать, чтобы успешно защититься.
         </p>
-      </div>
 
-      <div className="AboutProject__period">
-        <div className="AboutProject__back-end">
-          <span className="AboutProject__back-end_week">1 неделя</span>
-          <span className="AboutProject__back-end_name">Back-end</span>
-        </div>
-        <div className="AboutProject__front-end">
-          <span className="about-project__front-end_week">4 недели</span>
-          <span className="about-project__front-end_name">Front-end</span>
+        <div className="AboutProject__period">
+          <div className="AboutProject__back-end">
+            <p className="AboutProject__back-end_time">1 неделя</p>
+            <p className="AboutProject__back-end_name">Back-end</p>
+          </div>
+          <div className="AboutProject__front-end">
+            <p className="about-project__front-end_time">4 недели</p>
+            <p className="about-project__front-end_name">Front-end</p>
+          </div>
         </div>
       </div>
     </section>

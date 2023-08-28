@@ -1,9 +1,100 @@
 import "./Navigation.css";
+import { Link, NavLink } from "react-router-dom";
 
-export default function Navigation() {
+export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
   return (
-    <section className="Navigation">
-      <div className="Navigation__container"></div>
-    </section>
+    <>
+      {loggedIn ? (
+        <nav
+          className={`Navigation__container Navigation_state_${
+            isOpenMenu ? "open" : "close"
+          }`}
+        >
+          <ul
+            className={`Navigation__list Navigation__list_logged Navigation__list_state_${
+              isOpenMenu ? "open" : "close"
+            }`}
+          >
+            {isOpenMenu && (
+              <li className="Navigation__item">
+                <NavLink
+                  className={({ isActive }) =>
+                    !isActive // TODO Bug with always active 1st NavLink(Router v6), change isActive when they fix it
+                      ? "Navigation__link Navigation__link_active"
+                      : "Navigation__link"
+                  }
+                  to="/"
+                >
+                  Главная
+                </NavLink>
+              </li>
+            )}
+            <li className="Navigation__item">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "Navigation__link Navigation__link_active"
+                    : "Navigation__link"
+                }
+                to="/movies"
+              >
+                Фильмы
+              </NavLink>
+            </li>
+            <li className="Navigation__unit">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "Navigation__link Navigation__link_active"
+                    : "Navigation__link"
+                }
+                to="/saved-movies"
+              >
+                Сохранённые фильмы
+              </NavLink>
+            </li>
+            <li className="Navigation__unit">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "Navigation__link link Navigation__link_type_account Navigation__link_active"
+                    : "Navigation__link link Navigation__link_type_account"
+                }
+                to="/profile"
+              >
+                Аккаунт
+              </NavLink>
+            </li>
+          </ul>
+          <button
+            type="button"
+            className={`${
+              isOpenMenu
+                ? "Navigation__accordion-button Navigation__accordion-button_close"
+                : "Navigation__accordion-button"
+            }`}
+            onClick={onClickMenu}
+          ></button>
+        </nav>
+      ) : (
+        <nav className="Navigation__container">
+          <ul className="Navigation__list">
+            <li className="Navigation__element">
+              <Link className="Navigation__link" to="/sign-up">
+                Регистрация
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="Navigation__link Navigation__link_sign-in"
+                to="/sign-in"
+              >
+                Войти
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </>
   );
 }

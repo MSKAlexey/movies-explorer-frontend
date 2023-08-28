@@ -4,6 +4,7 @@
 .AboutProject__container {
   width: 284px;
   margin: 0 auto;
+  padding: 72px 0 0 0;
 }
 
 .AboutProject__title {
@@ -14,7 +15,7 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.72px;
-  padding: 0;
+  padding: 0 0 28px 0;
   margin: 0;
   border-bottom: 1px solid #424242;
 }
@@ -27,6 +28,8 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.72px;
+  margin: 0;
+  padding: 60px 0 0 0;
 }
 
 .AboutProject__text {
@@ -36,36 +39,85 @@
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
+  margin: 0;
+  padding: 16px 0 0 0;
 }
 
-.AboutProject__period{
-
+.AboutProject__period {
+  display: flex;
+  margin: 0 0 0 0;
+  padding: 60px 0 0 0;
 }
 
-.AboutProject__back-end{
-
+.AboutProject__back-end {
 }
 
-.AboutProject__back-end_week{
+.AboutProject__back-end_time {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-
+  color: #000;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background: #3ddc84;
+  width: 100px;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.AboutProject__back-end_name{
+.AboutProject__back-end_name {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-
+  color: #a0a0a0;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 10px 0 0 0;
 }
 
-.AboutProject__front-end{
-
+.AboutProject__front-end {
 }
 
-.about-project__front-end_week{
+.about-project__front-end_time {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 184px;
+  height: 35px;
+  flex-shrink: 0;
+  background: #303030;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 
-.about-project__front-end_name{
+.about-project__front-end_name {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-
+  color: #a0a0a0;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

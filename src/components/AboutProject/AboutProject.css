@@ -1,19 +1,17 @@
-.AboutProject {
-}
-
 .AboutProject__container {
   width: 284px;
   margin: 0 auto;
   padding: 72px 0 0 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-style: normal;
+  line-height: normal;
+  font-size: 11px;
+  font-weight: 400;
 }
 
 .AboutProject__title {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.72px;
   padding: 0 0 28px 0;
   margin: 0;
@@ -21,23 +19,13 @@
 }
 
 .AboutProject__subtitle {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.72px;
   margin: 0;
   padding: 60px 0 0 0;
 }
 
 .AboutProject__text {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 16px;
   margin: 0;
   padding: 16px 0 0 0;
@@ -45,39 +33,26 @@
 
 .AboutProject__period {
   display: flex;
-  margin: 0 0 0 0;
+  margin: 0;
   padding: 60px 0 0 0;
 }
 
-.AboutProject__back-end {
-}
-
 .AboutProject__back-end_time {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   color: #000;
-  text-align: center;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   background: #3ddc84;
   width: 100px;
-  height: 35px;
+  height: 36px;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 }
 
 .AboutProject__back-end_name {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   color: #a0a0a0;
   text-align: center;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -85,17 +60,8 @@
   padding: 10px 0 0 0;
 }
 
-.AboutProject__front-end {
-}
-
-.about-project__front-end_time {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
+.AboutProject__front-end_time {
   text-align: center;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   width: 184px;
   height: 35px;
   flex-shrink: 0;
@@ -107,17 +73,62 @@
   padding: 0;
 }
 
-.about-project__front-end_name {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+.AboutProject__front-end_name {
   color: #a0a0a0;
   text-align: center;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   margin: 0;
   padding: 10px 0 0 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .AboutProject__container {
+    width: 668px;
+    padding: 90px 0 0 0;
+  }
+  .AboutProject__title {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.88px;
+    padding: 0 0 24px 0;
+  }
+  .AboutProject__subtitle {
+    font-size: 20px;
+    letter-spacing: -0.8px;
+  }
+  .AboutProject__table {
+    display: flex;
+  }
+  .AboutProject__table-element {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 0 0;
+  }
+  .AboutProject__table-element:last-child {
+    padding: 10px 0 0px 28px;
+  }
+  .AboutProject__text {
+    font-size: 12px;
+    line-height: 18px; /* 150% */
+    width: 319px;
+    padding: 24px 0 0 0;
+  }
+  .AboutProject__period {
+    font-size: 14px;
+    padding: 91px 0 0 0;
+  }
+  .AboutProject__back-end_time {
+    width: 140px;
+  }
+  .AboutProject__front-end_time {
+    width: 528px;
+  }
+  .AboutProject__front-end_name {
+    padding: 14px 0 0 0;
+  }
+  .AboutProject__back-end_name {
+    padding: 14px 0 0 0;
+  }
 }

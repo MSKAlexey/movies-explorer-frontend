@@ -1,24 +1,24 @@
 .Navigation__container {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  text-align: right;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
   padding: 12px 14px 0 0;
   margin: 0;
 }
 
-.Navigation__list {
+.Navigation__table {
   list-style: none;
   display: flex;
+  padding: 0;
+  margin: 18px 0 0 0;
 }
 
 .Navigation__link {
   text-decoration: none;
   color: #fff;
-  text-align: right;
-  font-family: "Inter", "Arial", "Helvetica", sans-serif;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  padding: 20px 14px 0 0;
-  margin: 0 0 0 0;
 }
 
 .Navigation__link_sign-in {
@@ -26,4 +26,27 @@
   background: #3ddc84;
   padding: 8px 12px 6px 12px;
   margin: 0;
+  color: black;
+}
+
+.Navigation__link_sign-up {
+  padding: 0;
+  margin: 0 14px 0 0;
+}
+
+@media screen and (min-width: 768px) {
+  .Navigation__container {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .Navigation__link_sign-up {
+    padding: 0;
+    margin: 0 30px 0 0;
+  }
+  .Navigation__table {
+    margin: 18px 16px 0 0;
+  }
+  .Navigation__link_sign-in {
+    padding: 10px 20px 8px 20px;
+  }
 }

@@ -1,0 +1,41 @@
+.Footer__container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 132px 0 0 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Footer__title {
+  color: #8b8b8b;
+  text-align: center;
+  padding: 0 0 22px 0;
+  margin: 0;
+  border-bottom: 1px solid #424242;
+}
+
+.Footer__text-container {
+  text-align: center;
+}
+
+.Footer__subtitle {
+  color: #fff;
+  padding: 30px 0 0 0;
+  margin: 0;
+}
+
+.Footer__git {
+  color: #fff;
+  padding: 12px 0 0 0;
+  margin: 0;
+}
+
+.Footer__copyright {
+  color: #8b8b8b;
+  padding: 30px 0 20px 0;
+  margin: 0;
+}

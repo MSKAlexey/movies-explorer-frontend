@@ -19,7 +19,7 @@ export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
               <li className="Navigation__item">
                 <NavLink
                   className={({ isActive }) =>
-                    !isActive // TODO Bug with always active 1st NavLink(Router v6), change isActive when they fix it
+                    !isActive
                       ? "Navigation__link Navigation__link_active"
                       : "Navigation__link"
                   }
@@ -78,13 +78,13 @@ export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
         </nav>
       ) : (
         <nav className="Navigation__container">
-          <ul className="Navigation__list">
-            <li className="Navigation__element">
-              <Link className="Navigation__link" to="/sign-up">
+          <ul className="Navigation__table">
+            <li className="Navigation__column">
+              <Link className="Navigation__link Navigation__link_sign-up" to="/sign-up">
                 Регистрация
               </Link>
             </li>
-            <li>
+            <li className="Navigation__column">
               <Link
                 className="Navigation__link Navigation__link_sign-in"
                 to="/sign-in"

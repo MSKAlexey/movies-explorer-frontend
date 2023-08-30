@@ -2,14 +2,15 @@
   padding: 140px 0 0 0;
   margin: 0 auto;
   width: 292px;
-}
-.AboutMe__title {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   color: #fff;
-  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.AboutMe__title {
+  font-size: 18px;
   letter-spacing: -0.72px;
   border-bottom: 1px solid #dadada;
   padding: 0 0 30px 0;
@@ -25,22 +26,14 @@
 }
 
 .AboutMe__subtitle {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -1.2px;
   padding: 36px 0 0 0;
   margin: 0;
 }
 
 .AboutMe__age {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   font-size: 11px;
-  font-style: normal;
   font-weight: 500;
   line-height: 16px;
   padding: 20px 0 0 0;
@@ -48,23 +41,60 @@
 }
 
 .AboutMe__text {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 16px;
   padding: 20px 0 0 0;
   margin: 0;
 }
 
 .AboutMe__git {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
   padding: 40px 0 0 0;
   margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .AboutMe__container {
+    width: 668px;
+    padding: 182px 0 0 0;
+  }
+  .AboutMe__title {
+    font-size: 22px;
+    padding: 0 0 22px 0;
+  }
+  .AboutMe__photo {
+    width: 255px;
+    height: 307px;
+    border-radius: 10px;
+    padding: 0;
+    margin: 68px 0 0 0;
+    /* position: absolute; */
+    /* right: 50px; */
+  }
+  .AboutMe__block-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .AboutMe__text-container {
+    width: 364px;
+    padding: 28px 0 0 0;
+  }
+  .AboutMe__subtitle {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+  }
+  .AboutMe__age {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .AboutMe__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .AboutMe__git {
+    padding: 86px 0 0 0;
+  }
 }

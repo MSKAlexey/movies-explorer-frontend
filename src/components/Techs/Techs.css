@@ -1,21 +1,21 @@
 .Techs__container {
-  width: 292px;
+  width: 284px;
   margin: 0 auto;
   padding: 140px 0 0 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .Techs__title_container {
-  width: 284px;
+  /* width: 284px; */
   margin: 0 auto;
 }
 
 .Techs__title {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.72px;
   margin: 0;
   padding: 0 0 26px 0;
@@ -23,26 +23,17 @@
 }
 
 .Techs__subtitle {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   text-align: center;
   font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -1.2px;
   margin: 0;
   padding: 62px 0 0 0;
 }
 
 .Techs__text {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   text-align: center;
   font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px; /* 145.455% */
+  line-height: 16px;
   letter-spacing: -0.44px;
   padding: 24px 0 0 0;
   margin: 0;
@@ -58,22 +49,46 @@
   justify-content: center;
 }
 
-.Techs__column {
-}
-
 .Techs__ctechnology {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  color: #fff;
   text-align: center;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.48px;
   border-radius: 10px;
   background: #303030;
   padding: 20px 0 20px 0;
   margin: 0;
-  /* width: 84px; */
-  /* height: 57px; */
+}
+
+@media screen and (min-width: 768px) {
+  .Techs__container {
+    width: 668px;
+    padding: 180px 0 0 0;
+  }
+  .Techs__title {
+    font-size: 22px;
+    letter-spacing: -0.88px;
+    padding: 0 0 24px 0;
+  }
+  .Techs__subtitle {
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -2px;
+    padding: 80px 0 0 0;
+  }
+  .Techs__text {
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+    width: 460px;
+    padding: 22px 0 0 0;
+    margin: 0 auto;
+  }
+  .Techs__table {
+    grid-template-columns: repeat(7, 84px);
+    gap: 10px;
+    padding: 84px 0 0 0;
+    margin: 0;
+    justify-content: center;
+  }
 }

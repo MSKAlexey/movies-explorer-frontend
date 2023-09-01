@@ -18,6 +18,10 @@
   border-bottom: 1px solid #424242;
 }
 
+.AboutProject__table {
+  display: grid;
+}
+
 .AboutProject__subtitle {
   font-size: 18px;
   letter-spacing: -0.72px;
@@ -32,55 +36,48 @@
 }
 
 .AboutProject__period {
-  display: flex;
+  display: grid;
+  grid-template-columns: 100px 1fr;
   margin: 0;
   padding: 60px 0 0 0;
+  text-align: center;
 }
 
 .AboutProject__back-end_time {
   color: #000;
   background: #3ddc84;
-  width: 100px;
-  height: 36px;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  text-align: center;
+  justify-content: center;
 }
 
 .AboutProject__back-end_name {
   color: #a0a0a0;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   margin: 0;
-  padding: 10px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .AboutProject__front-end_time {
-  text-align: center;
-  width: 184px;
-  height: 35px;
   flex-shrink: 0;
   background: #303030;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .AboutProject__front-end_name {
   color: #a0a0a0;
-  text-align: center;
   margin: 0;
-  padding: 10px 0 0 0;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: end;
 }
 
 @media screen and (min-width: 768px) {
@@ -99,36 +96,45 @@
     letter-spacing: -0.8px;
   }
   .AboutProject__table {
-    display: flex;
-  }
-  .AboutProject__table-element {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(2, 324px);
     padding: 10px 0 0 0;
-  }
-  .AboutProject__table-element:last-child {
-    padding: 10px 0 0px 28px;
+    gap: 26px;
   }
   .AboutProject__text {
     font-size: 12px;
-    line-height: 18px; /* 150% */
-    width: 319px;
+    line-height: 18px;
     padding: 24px 0 0 0;
   }
   .AboutProject__period {
+    grid-template-columns: 140px 1fr;
     font-size: 14px;
     padding: 91px 0 0 0;
   }
-  .AboutProject__back-end_time {
-    width: 140px;
+  .AboutProject__front-end {
+    display: grid;
+    grid-template-rows: 36px 32px;
   }
-  .AboutProject__front-end_time {
-    width: 528px;
+  .AboutProject__back-end {
+    display: grid;
+    grid-template-rows: 36px 32px;
   }
-  .AboutProject__front-end_name {
-    padding: 14px 0 0 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .AboutProject__container {
+    width: 1140px;
+    padding: 102px 0 0 0;
   }
-  .AboutProject__back-end_name {
-    padding: 14px 0 0 0;
+  .AboutProject__table {
+    grid-template-columns: repeat(2, 550px);
+    gap: 40px;
+  }
+  .AboutProject__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .AboutProject__period {
+    grid-template-columns: 228px 1fr;
+    padding: 112px 0 0 0;
   }
 }

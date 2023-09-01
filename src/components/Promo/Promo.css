@@ -54,3 +54,30 @@
     align-self: flex-start;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .Promo__container {
+    max-width: 1280px;
+    padding: 0 0 0 0;
+  }
+  .Promo__logo {
+    width: 776px;
+    height: 380px;
+    padding: 34px 16px 0 0;
+    align-self: flex-end;
+  }
+  .Promo__logo-img {
+    width: 722px;
+    height: 244px;
+  }
+  .Promo__title-container{
+    width: 626px;
+    padding: 64px 0 0 16px;
+    margin: 0;
+    
+  }
+  .Promo__title{
+    padding: 0 0 0 54px;
+    text-align: left;
+  }
+}

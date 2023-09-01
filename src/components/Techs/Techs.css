@@ -10,7 +10,6 @@
 }
 
 .Techs__title_container {
-  /* width: 284px; */
   margin: 0 auto;
 }
 
@@ -90,5 +89,21 @@
     padding: 84px 0 0 0;
     margin: 0;
     justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Techs__container {
+    width: 1140px;
+    padding: 210px 0 0 0;
+  }
+  .Techs__subtitle {
+    padding: 88px 0 0 0;
+  }
+  .Techs__text {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+    padding: 26px 0 0 0;
   }
 }

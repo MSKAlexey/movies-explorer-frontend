@@ -39,3 +39,28 @@
   padding: 30px 0 20px 0;
   margin: 0;
 }
+
+@media screen and (min-width: 768px) {
+  .Footer__container {
+    padding: 152px 0 12px 0;
+    width: 708px;
+    font-size: 13px;
+  }
+  .Footer__text-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .Footer__reverse {
+    display: flex;
+  }
+  .Footer__copyright {
+    padding: 18px 0 0 0;
+  }
+  .Footer__subtitle{
+    padding: 18px 22px 0 0;
+  }
+  .Footer__git {
+    padding: 18px 0 0 0;
+  }
+}

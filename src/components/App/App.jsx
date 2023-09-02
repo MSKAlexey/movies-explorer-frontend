@@ -29,12 +29,13 @@ export default function App() {
   const [cards, setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   // const [loggedIn, setLoggedIn] = useState(true);
-  const [isOpenMenu, setOpenMenu] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  // const [isOpenMenu, setIsOpenMenu] = useState(true);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleMenuClick = () => setOpenMenu(!isOpenMenu);
+  const handleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
   const handleLogin = (email) => {
     setLoggedIn(true);
@@ -193,11 +194,6 @@ export default function App() {
               path="/123"
               element={
                 <>
-                  {/* <Header
-                    loggedIn={loggedIn}
-                    logOut={logOut}
-                    userData={userData}
-                  /> */}
                   <ProtectedRoute
                     loggedIn={loggedIn}
                     element={Main}
@@ -229,7 +225,7 @@ export default function App() {
               element={
                 <Register
                   handelRegisterSubmit={handelRegisterSubmit}
-                  // errorMessage={errorMessage}
+                  errorMessage={errorMessage}
                 />
               }
             />
@@ -252,45 +248,6 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
-
-        {/* редактирование профиля */}
-        <EditProfilePopup
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-        />
-
-        {/* редактирование аватара */}
-        <EditAvatarPopup
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateAvatar}
-        />
-
-        {/* добавление карточки */}
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          onAddCard={handleAddPlaceSubmit}
-        />
-        {/* удаление карточки */}
-        <PopupWithForm
-          name={"remove"}
-          title={"Вы уверены?"}
-          buttonText={"Да"}
-        />
-        {/* открытие картинки */}
-        <ImagePopup
-          onClose={closeAllPopups}
-          isOpen={isImagePopupOpen}
-          card={selectedCard}
-        />
-        <InfoTooltip
-          isOpen={isRegisterPopupOpen}
-          onClose={closeAllPopups}
-          name={"register"}
-          statusRegister={isInfoTolltip}
-        />
       </div>
     </CurrentUserContext.Provider>
   );

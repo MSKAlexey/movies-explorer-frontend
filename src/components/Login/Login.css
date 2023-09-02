@@ -27,12 +27,12 @@
   font-weight: 500;
   line-height: normal;
   border-radius: 3px;
-
   background: #4285f4;
   margin: 280px auto 0;
   padding: 0 0 0 0;
   width: 260px;
   height: 45px;
+  outline: none;
 }
 
 .Login__form {
@@ -51,8 +51,13 @@
   line-height: 17px;
   color: #ffffff;
   margin: 0;
-  padding: 0 0 8px 0;
-  background-color: black;
+  padding: 2px 0 10px 0;
+  background-color: #202020;
+}
+
+.Login__input:focus {
+  border-bottom: 1px solid #4285f4;
+  font-weight: 500;
 }
 
 .Login__text {
@@ -87,7 +92,7 @@
   line-height: 15px;
   color: red;
   display: block;
-  margin: 4px 0 0 0;
+  margin: 0;
   box-sizing: border-box;
   min-height: 30px;
 }

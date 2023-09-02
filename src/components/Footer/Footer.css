@@ -68,6 +68,6 @@
 @media screen and (min-width: 1280px) {
   .Footer__container {
     width: 1140px;
-    padding: 188px 0 0 0;
+    padding: 188px 0 50px 0;
   }
 }

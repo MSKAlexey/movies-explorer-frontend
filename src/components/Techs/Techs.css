@@ -58,7 +58,7 @@
   margin: 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 670px) {
   .Techs__container {
     width: 668px;
     padding: 180px 0 0 0;
@@ -105,5 +105,13 @@
     line-height: 20px;
     letter-spacing: -0.56px;
     padding: 26px 0 0 0;
+  }
+  .Techs__ctechnology {
+    font-size: 14px;
+    letter-spacing: -0.56px;
+  }
+  .Techs__table {
+    gap: 16px;
+    padding: 102px 0 0 0;
   }
 }

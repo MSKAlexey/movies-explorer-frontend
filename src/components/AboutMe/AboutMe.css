@@ -69,8 +69,6 @@
     border-radius: 10px;
     padding: 0;
     margin: 68px 0 0 0;
-    /* position: absolute; */
-    /* right: 50px; */
   }
   .AboutMe__block-container {
     display: flex;
@@ -96,5 +94,47 @@
   }
   .AboutMe__git {
     padding: 86px 0 0 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .AboutMe__container {
+    width: 1140px;
+    padding: 0;
+  }
+  .AboutMe__title {
+    width: 1140px;
+    padding: 212px 0 24px 0;
+    font-size: 22px;
+    letter-spacing: -0.88px;
+  }
+  .AboutMe__subtitle {
+    padding: 0;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -2px;
+  }
+  .AboutMe__age {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 22px 0 0 0;
+  }
+  .AboutMe__text {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 24px 0 0 0;
+  }
+  .AboutMe__git {
+    gap: 16px;
+    padding: 102px 0 0 0;
+  }
+  .AboutMe__text-container {
+    width: 600px;
+    padding: 64px 0 0 0;
+  }
+  .AboutMe__photo {
+    width: 270px;
+    height: 327px;
   }
 }

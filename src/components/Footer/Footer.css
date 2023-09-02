@@ -1,7 +1,7 @@
 .Footer__container {
   width: 300px;
   margin: 0 auto;
-  padding: 132px 0 0 0;
+  padding: 132px 0 50px 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-feature-settings: "clig" off, "liga" off;
   font-size: 12px;
@@ -42,7 +42,7 @@
 
 @media screen and (min-width: 768px) {
   .Footer__container {
-    padding: 152px 0 12px 0;
+    padding: 152px 0 50px 0;
     width: 708px;
     font-size: 13px;
   }
@@ -57,10 +57,17 @@
   .Footer__copyright {
     padding: 18px 0 0 0;
   }
-  .Footer__subtitle{
+  .Footer__subtitle {
     padding: 18px 22px 0 0;
   }
   .Footer__git {
     padding: 18px 0 0 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Footer__container {
+    width: 1140px;
+    padding: 188px 0 0 0;
   }
 }

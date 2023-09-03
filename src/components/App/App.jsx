@@ -16,8 +16,10 @@ import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoute";
 import api from "../../utils/Api";
 import * as auth from "../../utils/Auth";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 export default function App() {
+  const handleClickToBack = () => navigate("/");
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -228,6 +230,11 @@ export default function App() {
                   errorMessage={errorMessage}
                 />
               }
+            />
+
+            <Route
+              path="/not"
+              element={<PageNotFound onClickBack={handleClickToBack} />}
             />
 
             <Route

@@ -12,6 +12,8 @@ import api from "../../utils/Api";
 import * as auth from "../../utils/Auth";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import MenuPopup from "../MenuPopup/MenuPopup";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 export default function App() {
   const handleClickToBack = () => navigate("/");
@@ -207,6 +209,36 @@ export default function App() {
             <Route
               path="/not"
               element={<PageNotFound onClickBack={handleClickToBack} />}
+            />
+
+            <Route
+              path="/movies"
+              element={
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    isOpenMenu={isOpenMenu}
+                    onClickMenu={handleMenuClick}
+                  />
+                  <Movies />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/save-movies"
+              element={
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    isOpenMenu={isOpenMenu}
+                    onClickMenu={handleMenuClick}
+                  />
+                  <SavedMovies />
+                  <Footer />
+                </>
+              }
             />
 
             <Route

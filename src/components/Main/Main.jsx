@@ -5,7 +5,7 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 
-function Main() {
+export default function Main() {
   return (
     <main className="Main">
       <Promo />
@@ -16,4 +16,3 @@ function Main() {
     </main>
   );
 }
-export default Main;

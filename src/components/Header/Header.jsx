@@ -13,7 +13,7 @@ export default function Header({ loggedIn, isOpenMenu, onClickMenu }) {
         location.pathname === "/" ? "landing" : "main"
       }`}
     >
-      <Link className="Header__logo" href="/">
+      <Link className="Header__logo" to="/">
         <img className="Header__logo-link" src={logo} alt="Логотип" />
       </Link>
 

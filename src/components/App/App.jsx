@@ -5,44 +5,35 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
-import PopupWithForm from "../PopupWithForm";
-import EditProfilePopup from "../EditProfilePopup";
-import EditAvatarPopup from "../EditAvatarPopup";
-import AddPlacePopup from "../AddPlacePopup";
-import ImagePopup from "../ImagePopup";
-import InfoTooltip from "../InfoTooltip";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoute";
 import api from "../../utils/Api";
 import * as auth from "../../utils/Auth";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import MenuPopup from "../MenuPopup/MenuPopup";
 
 export default function App() {
   const handleClickToBack = () => navigate("/");
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
+  const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
-  const [isImagePopupOpen, setImagePopupOpen] = useState(false);
-  const [selectedCard, setselectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
-  // const [loggedIn, setLoggedIn] = useState(true);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   // const [isOpenMenu, setIsOpenMenu] = useState(true);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleMenuClick = () => setIsOpenMenu(!isOpenMenu);
+  // const handleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
   const handleLogin = (email) => {
     setLoggedIn(true);
     setUserData(email);
   };
+
   // проверка токена
   function tokenCheck() {
     const jwt = localStorage.getItem("jwt");
@@ -62,26 +53,12 @@ export default function App() {
     tokenCheck();
   }, []);
   // открытия попапов
-  function handleEditAvatarClick() {
-    setIsEditAvatarPopupOpen(true);
-  }
-  function handleEditProfileClick() {
-    setIsEditProfilePopupOpen(true);
-  }
-  function handleAddPlaceClick() {
-    setIsAddPlacePopupOpen(true);
-  }
-  function handleCardClick(card) {
-    setImagePopupOpen(true);
-    setselectedCard(card);
+  function handleMenuClick() {
+    setIsMenuPopup(true);
   }
   // закрытие всех попапов
   function closeAllPopups() {
-    setIsEditProfilePopupOpen(false);
-    setIsEditAvatarPopupOpen(false);
-    setIsAddPlacePopupOpen(false);
-    setImagePopupOpen(false);
-    setIsRegisterPopupOpen(false);
+    setIsMenuPopup(false);
   }
   // ставим лайк картинке, середечко становиться черного цвета
   function handleCardLike(card) {
@@ -116,31 +93,31 @@ export default function App() {
       .catch(console.log);
   }
   // редактируем имя и профессию профиля
-  function handleUpdateUser(data) {
-    api
-      .changeUserInfo(data)
-      .then((data) => {
-        setCurrentUser(data);
-        closeAllPopups();
-      })
-      .catch(console.log);
-  }
-  // изменяем картинку аватара пользователя
-  function handleUpdateAvatar(data) {
-    api
-      .changeUserAvatar(data)
-      .then((data) => {
-        setCurrentUser(data);
-        closeAllPopups();
-      })
-      .catch(console.log);
-  }
+  // function handleUpdateUser(data) {
+  //   api
+  //     .changeUserInfo(data)
+  //     .then((data) => {
+  //       setCurrentUser(data);
+  //       closeAllPopups();
+  //     })
+  //     .catch(console.log);
+  // }
+  // // изменяем картинку аватара пользователя
+  // function handleUpdateAvatar(data) {
+  //   api
+  //     .changeUserAvatar(data)
+  //     .then((data) => {
+  //       setCurrentUser(data);
+  //       closeAllPopups();
+  //     })
+  //     .catch(console.log);
+  // }
   // субмит формы регистрации
   function handelRegisterSubmit({ email, password }) {
     auth
       .register({ email, password })
       .then(() => {
-        setIsRegisterPopupOpen(true);
+        // setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);
         navigate("/sign-in");
       })
@@ -148,8 +125,8 @@ export default function App() {
         setIsInfoTolltip(false);
         // setErrorMessage(err);   При переключении страниц регистрации/логин ошибка остается старая, то есть с не удачной попытки регистрации бует отображатся на странице логина
         console.log(err);
-      })
-      .finally(setIsRegisterPopupOpen(true));
+      });
+    // .finally(setIsRegisterPopupOpen(true));
   }
   // субмит формы входа
   function handelLoginSubmit({ email, password }) {
@@ -164,7 +141,6 @@ export default function App() {
       })
       .catch((err) => {
         setIsInfoTolltip(false);
-        setIsRegisterPopupOpen(true);
         // setErrorMessage(err);
         console.log(err);
       });
@@ -199,10 +175,6 @@ export default function App() {
                   <ProtectedRoute
                     loggedIn={loggedIn}
                     element={Main}
-                    onEditAvatar={handleEditAvatarClick}
-                    onEditProfile={handleEditProfileClick}
-                    onAddPlace={handleAddPlaceClick}
-                    onCardClick={handleCardClick}
                     onCardLike={handleCardLike}
                     cards={cards}
                     onCardDelete={handleCardDelete}
@@ -255,6 +227,8 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
+
+        <MenuPopup onClose={closeAllPopups} isOpen={isMenuPopup} />
       </div>
     </CurrentUserContext.Provider>
   );

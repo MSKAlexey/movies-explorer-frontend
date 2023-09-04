@@ -1,4 +1,4 @@
-.Navigation__container {
+.Navigation__menu-container {
   font-family: "Inter", "Arial", "Helvetica", sans-serif;
   text-align: right;
   font-size: 10px;
@@ -7,6 +7,22 @@
   line-height: 16px;
   padding: 12px 14px 0 0;
   margin: 0;
+}
+
+.Navigation__list_state_close {
+  visibility: hidden;
+}
+
+.Navigation__menu {
+  width: 40px;
+  height: 43px;
+  flex-shrink: 0;
+  background: url(../../images/menuIcon.svg) no-repeat center;
+  position: absolute;
+  top: 15px;
+  right: 14px;
+  /* display: block; */
+  border: none;
 }
 
 .Navigation__table {
@@ -19,6 +35,10 @@
 .Navigation__link {
   text-decoration: none;
   color: #fff;
+}
+
+.Navigation__link_active {
+  color: #3ddc84;
 }
 
 .Navigation__link_sign-in {
@@ -35,7 +55,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .Navigation__container {
+  .Navigation__menu-container {
     font-size: 12px;
     line-height: 16px;
   }
@@ -51,8 +71,63 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 800px) {
   .Navigation__container {
+    min-width: 88%;
+  }
+  .Navigation__menu-container {
     padding: 12px 54px 0 0;
+  }
+  .Navigation__list_state_close {
+    visibility: visible;
+  }
+  .Navigation__menu {
+    visibility: hidden;
+  }
+  .Navigation__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 28px 0 0 0;
+  }
+  .Navigation__movie-container {
+    display: flex;
+    font-family: "Inter", "Arial", "Helvetica", sans-serif;
+    color: #fff;
+    text-align: right;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    display: flex;
+    gap: 16px;
+  }
+  .Navigation__account-unit {
+    font-family: "Inter", "Arial", "Helvetica", sans-serif;
+    color: #fff;
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    padding: 2px 70px 0 0;
+    margin: 0;
+  }
+  .Navigation__link_type_account{
+    /* display: flex; */
+    /* align-items: center; */
+  }
+  .Navigation__link_type_account::after {
+    content: "";
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+    background-color: #0f4157;
+    background-image: url("../../images/accountIcon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    /* margin: 0 34px 0 0; */
+    /* display: inline-block; */
   }
 }

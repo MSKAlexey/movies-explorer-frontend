@@ -1,5 +1,6 @@
 // export const BASE_URL = 'https://api.alexey.nomoredomains.xyz';
-export const BASE_URL = 'http://localhost:3000';
+// export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = "https://api.alexey.nomoreparties.co";
 
 function checkStatusResponse(res) {
   if (res.ok) {
@@ -8,39 +9,36 @@ function checkStatusResponse(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = ({ email, password }) => {
+export const register = ({ name, email, password }) => {
   return fetch(`${BASE_URL}/signup`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ password, email }),
-  })
-    .then(checkStatusResponse);
+    body: JSON.stringify({ name, password, email }),
+  }).then(checkStatusResponse);
 };
 
 export const authorize = ({ email, password }) => {
-  const token = localStorage.getItem('jwt');
+  const token = localStorage.getItem("jwt");
   return fetch(`${BASE_URL}/signin`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ email, password }),
-  })
-    .then(checkStatusResponse);
+  }).then(checkStatusResponse);
 };
 
 export const getContent = () => {
-  const token = localStorage.getItem('jwt');
+  const token = localStorage.getItem("jwt");
   return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-  })
-    .then(checkStatusResponse);
+  }).then(checkStatusResponse);
 };

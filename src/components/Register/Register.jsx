@@ -7,11 +7,12 @@ export default function Register({
   handelRegisterSubmit /* , errorMessage  */,
 }) {
   const [formValue, setFormValue] = useState({
+    name: "",
     email: "",
     password: "",
   });
 
-  const { email, password } = formValue;
+  const { name, email, password } = formValue;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +24,7 @@ export default function Register({
 
   function handelSubmit(e) {
     e.preventDefault();
-    handelRegisterSubmit({ email, password });
+    handelRegisterSubmit({ name, email, password });
   }
 
   return (

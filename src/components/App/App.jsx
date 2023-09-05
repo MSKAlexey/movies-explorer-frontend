@@ -29,8 +29,8 @@ export default function App() {
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  // const [loggedIn, setLoggedIn] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(true);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   // const [isOpenMenu, setIsOpenMenu] = useState(true);
   const navigate = useNavigate();
@@ -123,9 +123,9 @@ export default function App() {
   //     .catch(console.log);
   // }
   // субмит формы регистрации
-  function handelRegisterSubmit({ email, password }) {
+  function handelRegisterSubmit({ name, email, password }) {
     auth
-      .register({ email, password })
+      .register({ name, email, password })
       .then(() => {
         // setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);

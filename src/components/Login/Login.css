@@ -1,15 +1,13 @@
 .Login__container {
   display: flex;
   flex-direction: column;
-  position: relative;
-  width: 320px;
-  margin: 0 auto;
+  align-items: center;
+  padding: 56px 0 50px 0;
 }
 
 .Login__title {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   color: #fff;
-  text-align: center;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -21,24 +19,22 @@
 .Login__button {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   color: #fff;
-  text-align: center;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   border-radius: 3px;
   background: #4285f4;
-  margin: 280px auto 0;
   padding: 0 0 0 0;
-  width: 260px;
+  min-width: 260px;
   height: 45px;
   outline: none;
 }
 
 .Login__form {
   padding: 80px 0 0 0;
-  margin: 0 auto;
-  min-width: 260px;
+  display: grid;
+  gap: 310px;
 }
 
 .Login__input {
@@ -51,13 +47,18 @@
   line-height: 17px;
   color: #ffffff;
   margin: 0;
-  padding: 2px 0 10px 0;
+  padding: 4px 0 10px 0;
   background-color: #202020;
+  outline: none;
 }
 
 .Login__input:focus {
   border-bottom: 1px solid #4285f4;
-  font-weight: 500;
+}
+
+.Login__form-container {
+  display: grid;
+  gap: 24px;
 }
 
 .Login__text {
@@ -117,35 +118,28 @@
 .Login__logo-link {
   width: 38px;
   height: 38px;
-  display: flex;
-  margin: 0 auto;
-  padding: 56px 0 0 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 450px) {
   .Login__container {
     width: 396px;
-  }
-  .Login__logo-link {
-    margin: 0;
-    padding: 232px 0 0 0;
+    align-items: flex-start;
+    padding: 232px 0 50px 0;
+    margin: 0 auto;
   }
   .Login__title {
     padding: 40px 0 0 0;
-    text-align: left;
   }
   .Login__form {
-    margin: 0;
-    padding: 44px 0 0 0;
+    padding: 40px 0 0 0;
+    gap: 224px;
   }
   .Login__button {
     font-size: 14px;
-    margin: 188px auto 0;
     width: 398px;
   }
   .Login__text {
     font-size: 14px;
-    padding: 16px 0 0 0px;
   }
   .Login__link {
     font-size: 14px;
@@ -153,8 +147,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .Login__container {
+    padding: 0 0 50px 0;
+  }
   .Login__logo-link {
-    margin: 0;
     padding: 70px 0 0 0;
   }
 }

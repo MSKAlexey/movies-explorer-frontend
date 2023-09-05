@@ -1,15 +1,13 @@
 .Register__container {
   display: flex;
   flex-direction: column;
-  position: relative;
-  width: 320px;
-  margin: 0 auto;
+  padding: 56px 0 50px 0;
+  align-items: center;
 }
 
 .Register__title {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   color: #fff;
-  text-align: center;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -29,7 +27,7 @@
   border-radius: 3px;
 
   background: #4285f4;
-  margin: 205px auto 0;
+  margin: 0;
   padding: 0 0 0 0;
   width: 260px;
   height: 45px;
@@ -37,8 +35,12 @@
 
 .Register__form {
   padding: 80px 0 0 0;
-  margin: 0 auto;
-  min-width: 260px;
+  display: grid;
+  gap: 216px;
+}
+
+.Register__form-container {
+  display: grid;
 }
 
 .Register__input {
@@ -57,7 +59,7 @@
 }
 
 .Register__input:focus {
-  border-bottom: 1px solid #4285F4;
+  border-bottom: 1px solid #4285f4;
   font-weight: 500;
 }
 
@@ -118,18 +120,16 @@
 .Register__logo-link {
   width: 38px;
   height: 38px;
-  display: flex;
-  margin: 0 auto;
-  padding: 56px 0 0 0;
+  padding: 0;
+  margin: 0;
 }
 
 @media screen and (min-width: 768px) {
   .Register__container {
     width: 396px;
-  }
-  .Register__logo-link {
-    margin: 0;
-    padding: 232px 0 0 0;
+    align-items: flex-start;
+    padding: 232px 0 50px 0;
+    margin: 0 auto;
   }
   .Register__title {
     padding: 40px 0 0 0;
@@ -137,11 +137,11 @@
   }
   .Register__form {
     margin: 0;
-    padding: 44px 0 0 0;
+    padding: 38px 0 0 0;
+    gap: 130px;
   }
   .Register__button {
     font-size: 14px;
-    margin: 114px auto 0;
     width: 398px;
   }
   .Register__text {
@@ -154,8 +154,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .Register__logo-link {
-    margin: 0;
-    padding: 70px 0 0 0;
+  .Register__container {
+    padding: 70px 0 50px 0;
   }
 }

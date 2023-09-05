@@ -47,11 +47,17 @@
   display: grid;
   gap: 26px;
   padding: 144px 0 0 0;
+  justify-items: center;
 }
 
 .Popup__link {
   text-decoration: none;
   color: #fff;
+}
+
+.Popup__link:hover {
+  border-bottom: solid 2px #fff;
+  color: #bd757596;
 }
 
 .Popup__account {

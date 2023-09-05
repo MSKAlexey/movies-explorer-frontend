@@ -14,7 +14,7 @@ export default function MenuPopup({ onClose, isOpen }) {
           <Link className="Popup__link" to="/movies" /* onClick={onClose} */>
             Фильмы
           </Link>
-          <Link className="Popup__link" to="/save-movies" /* onClick={onClose} */>
+          <Link className="Popup__link" to="/saved-movies" /* onClick={onClose} */>
             Сохранённые фильмы
           </Link>
         </div>

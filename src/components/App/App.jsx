@@ -29,8 +29,8 @@ export default function App() {
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
-  // const [loggedIn, setLoggedIn] = useState(true);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   // const [isOpenMenu, setIsOpenMenu] = useState(true);
   const navigate = useNavigate();

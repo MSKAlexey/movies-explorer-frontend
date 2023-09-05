@@ -14,15 +14,17 @@
 }
 
 .Navigation__menu {
-  width: 40px;
-  height: 43px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
-  background: url(../../images/menuIcon.svg) no-repeat center;
+  background: url(../../images/iconMain.svg) no-repeat center;
+  background-size: 40px 43px;
   position: absolute;
   top: 15px;
   right: 14px;
-  /* display: block; */
   border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .Navigation__table {
@@ -58,6 +60,10 @@
   .Navigation__menu-container {
     font-size: 12px;
     line-height: 16px;
+  }
+  .Navigation__menu {
+    background-size: 44px 44px;
+    right: 30px;
   }
   .Navigation__link_sign-up {
     padding: 0;
@@ -114,7 +120,7 @@
     padding: 2px 70px 0 0;
     margin: 0;
   }
-  .Navigation__link_type_account{
+  .Navigation__link_type_account {
     /* display: flex; */
     /* align-items: center; */
   }

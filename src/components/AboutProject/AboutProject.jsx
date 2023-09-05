@@ -25,16 +25,20 @@ export default function AboutProject() {
             </p>
           </div>
         </div>
-        <div className="AboutProject__period">
-          <div className="AboutProject__back-end">
-            <p className="AboutProject__back-end_time">1 неделя</p>
-            <p className="AboutProject__back-end_name">Back-end</p>
-          </div>
-          <div className="AboutProject__front-end">
-            <p className="AboutProject__front-end_time">4 недели</p>
-            <p className="AboutProject__front-end_name">Front-end</p>
-          </div>
-        </div>
+        <ul className="AboutProject__period">
+          <li className="AboutProject__back-end AboutProject__period_time_position">
+            1 неделя
+          </li>
+          <li className="AboutProject__front-end AboutProject__period_time_position">
+            4 недели
+          </li>
+          <li className="AboutProject__back-end_name AboutProject__period_name_position">
+            Back-end
+          </li>
+          <li className="AboutProject__front-end_name AboutProject__period_name_position">
+            Front-end
+          </li>
+        </ul>
       </div>
     </section>
   );

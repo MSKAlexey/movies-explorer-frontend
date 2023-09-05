@@ -28,7 +28,7 @@
   padding: 40px 0 0 0;
   margin: 0;
   display: grid;
-  gap: 20px;
+  gap: 22px;
 }
 
 .Portfolio__column {
@@ -52,7 +52,7 @@
   border: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 670px) {
   .Portfolio__container {
     width: 668px;
     padding: 22px 0 0 0;

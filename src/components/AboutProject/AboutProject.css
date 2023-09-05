@@ -41,28 +41,27 @@
   margin: 0;
   padding: 60px 0 0 0;
   text-align: center;
+  grid-template-rows: 35px 24px;
+  list-style: none;
 }
 
-.AboutProject__back-end_time {
-  color: #000;
-  background: #3ddc84;
-  margin: 0;
-  padding: 0;
+.AboutProject__period_time_position {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.AboutProject__back-end_name {
-  color: #a0a0a0;
-  margin: 0;
-  padding: 0;
+.AboutProject__period_name_position {
   display: flex;
   flex-direction: column;
   justify-content: end;
 }
 
-.AboutProject__front-end_time {
+.AboutProject__back-end {
+  background: #3ddc84;
+}
+
+.AboutProject__front-end {
   flex-shrink: 0;
   background: #303030;
   margin: 0;
@@ -80,7 +79,7 @@
   justify-content: end;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 680px) {
   .AboutProject__container {
     width: 668px;
     padding: 90px 0 0 0;
@@ -109,14 +108,7 @@
     grid-template-columns: 140px 1fr;
     font-size: 14px;
     padding: 91px 0 0 0;
-  }
-  .AboutProject__front-end {
-    display: grid;
-    grid-template-rows: 36px 32px;
-  }
-  .AboutProject__back-end {
-    display: grid;
-    grid-template-rows: 36px 32px;
+    grid-template-rows: 35px 32px;
   }
 }
 

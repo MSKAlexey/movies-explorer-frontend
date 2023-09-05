@@ -54,7 +54,7 @@
   margin: 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 670px) {
   .AboutMe__container {
     width: 668px;
     padding: 182px 0 0 0;

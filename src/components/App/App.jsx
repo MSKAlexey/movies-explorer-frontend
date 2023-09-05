@@ -5,8 +5,15 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import Profile from "../Profile/Profile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+  useHref,
+} from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoute";
 import api from "../../utils/Api";
 import * as auth from "../../utils/Auth";
@@ -17,6 +24,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 
 export default function App() {
   const handleClickToBack = () => navigate("/");
+  const handleClickToExitProfile = () => navigate("/");
   const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -162,6 +170,7 @@ export default function App() {
   function logOut() {
     setLoggedIn(false);
     localStorage.removeItem("jwt");
+    navigate("/");
     // setErrorMessage('');
   }
 
@@ -170,7 +179,7 @@ export default function App() {
       <div className="App">
         <div className="App__container">
           <Routes>
-            <Route
+            {/* <Route
               path="/123"
               element={
                 <>
@@ -181,6 +190,51 @@ export default function App() {
                     cards={cards}
                     onCardDelete={handleCardDelete}
                   />
+                  <Footer />
+                </>
+              }
+            /> */}
+
+            <Route
+              path="/"
+              element={
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    isOpenMenu={isOpenMenu}
+                    onClickMenu={handleMenuClick}
+                  />
+                  <Main />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/movies"
+              element={
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    isOpenMenu={isOpenMenu}
+                    onClickMenu={handleMenuClick}
+                  />
+                  <Movies />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/saved-movies"
+              element={
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    isOpenMenu={isOpenMenu}
+                    onClickMenu={handleMenuClick}
+                  />
+                  <SavedMovies />
                   <Footer />
                 </>
               }
@@ -201,59 +255,32 @@ export default function App() {
               element={
                 <Register
                   handelRegisterSubmit={handelRegisterSubmit}
-                  errorMessage={errorMessage}
+                  // errorMessage={errorMessage}
                 />
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <>
+                  <Header
+                    loggedIn={loggedIn}
+                    isOpenMenu={isOpenMenu}
+                    onClickMenu={handleMenuClick}
+                  />
+                  <Profile
+                    logOut={logOut}
+                    userData={userData}
+                    onClickExit={handleClickToExitProfile}
+                  />
+                </>
               }
             />
 
             <Route
               path="/not"
               element={<PageNotFound onClickBack={handleClickToBack} />}
-            />
-
-            <Route
-              path="/movies"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <Movies />
-                  <Footer />
-                </>
-              }
-            />
-
-            <Route
-              path="/save-movies"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <SavedMovies />
-                  <Footer />
-                </>
-              }
-            />
-
-            <Route
-              path="/"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <Main />
-                  <Footer />
-                </>
-              }
             />
 
             <Route path="*" element={<Navigate to="/" replace />} />

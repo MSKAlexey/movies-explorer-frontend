@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 import logo from "../../images/logo.svg";
 
-export default function Register({ handelRegisterSubmit, errorMessage }) {
+export default function Register({ handelRegisterSubmit/* , errorMessage  */}) {
   const [formValue, setFormValue] = useState({
     email: "",
     password: "",
@@ -61,7 +61,7 @@ export default function Register({ handelRegisterSubmit, errorMessage }) {
             onChange={handleChange}
           />
           <span id="input-name-error" className="Register__error">
-            {errorMessage}
+            {/* {errorMessage} */}
           </span>
         </div>
         <div className="Register__form-input">

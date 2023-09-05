@@ -95,11 +95,11 @@
     justify-content: space-between;
     padding: 0;
     margin: 28px 0 0 0;
+    min-height: 34px;
   }
   .Navigation__movie-container {
     display: flex;
     font-family: "Inter", "Arial", "Helvetica", sans-serif;
-    color: #fff;
     text-align: right;
     font-size: 13px;
     font-style: normal;
@@ -107,25 +107,22 @@
     line-height: 18px;
     display: flex;
     gap: 16px;
+    min-height: 26px;
   }
   .Navigation__account-unit {
+    display: flex;
+    padding: 0 80px 0 0;
+  }
+  .Navigation__link_type_account {
     font-family: "Inter", "Arial", "Helvetica", sans-serif;
-    color: #fff;
-    font-feature-settings: "clig" off, "liga" off;
-    font-family: Inter;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
     line-height: 12px;
-    padding: 2px 70px 0 0;
+    padding: 0;
     margin: 0;
   }
-  .Navigation__link_type_account {
-    /* display: flex; */
-    /* align-items: center; */
-  }
-  .Navigation__link_type_account::after {
-    content: "";
+  .Navigation__image {
     width: 26px;
     height: 26px;
     border-radius: 50px;
@@ -133,7 +130,8 @@
     background-image: url("../../images/accountIcon.svg");
     background-repeat: no-repeat;
     background-position: center;
-    /* margin: 0 34px 0 0; */
-    /* display: inline-block; */
+    position: relative;
+    top: -4px;
+    right: -7px;
   }
 }

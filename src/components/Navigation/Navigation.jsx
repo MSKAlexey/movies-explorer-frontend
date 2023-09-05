@@ -37,24 +37,25 @@ export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
                   Сохранённые фильмы
                 </NavLink>
               </div>
-
             </div>
 
             <div className="Navigation__account-unit">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "Navigation__link Navigation__link_type_account Navigation__link_active"
-                    : "Navigation__link Navigation__link_type_account"
-                }
-                to="/profile"
-              >
-                Аккаунт
-              </NavLink>
+              <div className="Navigation__link-text">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "Navigation__link Navigation__link_type_account Navigation__link_active"
+                      : "Navigation__link Navigation__link_type_account"
+                  }
+                  to="/profile"
+                >
+                  Аккаунт
+                </NavLink>
+              </div>
+              <div className="Navigation__image"></div>
             </div>
-
           </div>
-          
+
           <button
             type="button"
             className={`${

@@ -2,7 +2,7 @@ class Api {
   constructor() {
     // this._url = 'https://api.alexey.nomoredomains.xyz';
     this._url = "http://localhost:3000";
-    this._url = "api.alexey.nomoreparties.co";
+    this._url = "https://api.alexey.nomoreparties.co";
   }
 
   _checkStatusResponse(res) {
@@ -11,10 +11,10 @@ class Api {
     }
     return Promise.reject(`Произошла ошибка`);
   }
-
-  getInitialCards() {
+  
+  getMovies() {
     const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}/movies`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

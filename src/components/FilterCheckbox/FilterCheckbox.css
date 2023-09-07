@@ -1,14 +1,14 @@
 .FilterCheckbox__container {
-  display: inline-block;
   position: relative;
   width: 36px;
   height: 20px;
   background-color: #343434;
   border-radius: 20px;
   padding: 0 0 0 0;
-  margin: 44px 0 0 86px;
+  margin: 0;
   display: flex;
-  border-bottom: 1px solid #424242;;
+  top: 64px;
+  left: -56px;
 }
 
 .FilterCheckbox__input {
@@ -21,7 +21,6 @@
   right: 0;
   bottom: 0;
   left: 2px;
-
   background-color: #2be080;
   width: 16px;
   height: 16px;
@@ -41,4 +40,26 @@
   line-height: 18px;
   padding: 2px 0 0 48px;
   margin: 0;
+}
+
+@media screen and (min-width: 708px) {
+  .FilterCheckbox__container {
+    left: 40px;
+    top: 0px;
+  }
+  .FilterCheckbox__slider-text {
+    font-size: 13px;
+    padding: 2px 0 0 50px;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .FilterCheckbox__container {
+    left: 76px;
+    top: 0px;
+  }
+  .FilterCheckbox__slider-text {
+    font-size: 13px;
+    padding: 2px 0 0 34px;
+  }
 }

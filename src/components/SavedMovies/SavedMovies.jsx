@@ -1,12 +1,12 @@
 import SearchForm from "../SearchForm/SearchForm";
-import "./SavedMovies.css";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import moviesBD from "../MainApi.json";
 
-export default function SavedMovies() {
+export default function SavedMovies({ like }) {
   return (
-    <section className="SavedMovies">
-      <div className="SavedMovies__container">
-        <SearchForm />
-      </div>
-    </section>
+    <main className="SavedMovies">
+      <SearchForm />
+      <MoviesCardList cards={moviesBD} like={like} />
+    </main>
   );
 }

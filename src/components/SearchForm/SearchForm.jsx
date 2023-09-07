@@ -5,17 +5,19 @@ export default function SearchForm() {
   return (
     <section className="SearchForm">
       <div className="SearchForm__container">
-        <form action="" className="SearchForm__form">
-          <input
-            type="text"
-            className="SearchForm__input"
-            placeholder="Фильм"
-          />
-          <button className="SearchForm__button">Найти</button>
-        </form>
+        <div className="SearchForm__form-container">
+          <form action="" className="SearchForm__form">
+            <div className="SearchForm__icon-search"></div>
+            <input
+              type="text"
+              className="SearchForm__input"
+              placeholder="Фильм"
+            />
+            <button className="SearchForm__button">Найти</button>
+          </form>
+        </div>
+        <FilterCheckbox />
       </div>
-      <FilterCheckbox />
-      <div className="SearchForm__border"></div>
     </section>
   );
 }

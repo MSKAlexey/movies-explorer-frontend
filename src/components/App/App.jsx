@@ -9,7 +9,7 @@ import Profile from "../Profile/Profile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoute";
-import api from "../../utils/Api";
+// import api from "../../utils/Api";
 import * as auth from "../../utils/Auth";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import MenuPopup from "../MenuPopup/MenuPopup";
@@ -29,6 +29,8 @@ export default function App() {
   // const [isOpenMenu, setIsOpenMenu] = useState(true);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
+  // const [like, isLiked] = React.useState(false);
+  const [like, isLiked] = React.useState(true);
 
   const handleLogin = (email) => {
     setLoggedIn(true);
@@ -95,17 +97,17 @@ export default function App() {
       });
   }
   // хук для начальной загрузки карточек с сервера и получение имя и профессии пользователя профиля. проверка на присутствие jwt токена в локальном хранилище
-  useEffect(() => {
-    if (loggedIn) {
-      Promise.all([api.getUserInfo(), api.getMovies()])
-        .then(([data, movie]) => {
-          // debugger;
-          setCurrentUser(data);
-          setMovies(movie);
-        })
-        .catch(console.log);
-    }
-  }, [loggedIn]);
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     Promise.all([api.getUserInfo(), api.getMovies()])
+  //       .then(([data, movie]) => {
+  //         // debugger;
+  //         setCurrentUser(data);
+  //         setMovies(movie);
+  //       })
+  //       .catch(console.log);
+  //   }
+  // }, [loggedIn]);
 
   // удаляем jwt токен из локального хранилища, выходим из профиля и переходим на главную страницу
   function logOut() {
@@ -143,7 +145,7 @@ export default function App() {
                     isOpenMenu={isOpenMenu}
                     onClickMenu={handleMenuClick}
                   />
-                  <Movies movies={movies} />
+                  <Movies like={like} />
                   <Footer />
                 </>
               }
@@ -158,7 +160,7 @@ export default function App() {
                     isOpenMenu={isOpenMenu}
                     onClickMenu={handleMenuClick}
                   />
-                  <SavedMovies />
+                  <SavedMovies like={like} />
                   <Footer />
                 </>
               }

@@ -1,7 +1,8 @@
 import "./Navigation.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
+  const location = useLocation();
   return (
     <>
       {loggedIn ? (
@@ -52,7 +53,11 @@ export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
                   Аккаунт
                 </NavLink>
               </div>
-              <div className="Navigation__image"></div>
+              <div
+                className={`Navigation__image Navigation__image_background-color_${
+                  location.pathname === "/" ? "landing" : "main"
+                }`}
+              ></div>
             </div>
           </div>
 

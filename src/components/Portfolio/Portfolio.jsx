@@ -11,7 +11,7 @@ export default function Portfolio() {
           <li className="Portfolio__column">
             <Link
               className="Portfolio__link"
-              href="#"
+              url="https://github.com/MSKAlexey/how-to-learn"
               alt="Галочка белого цвета"
             >
               Статичный сайт
@@ -20,7 +20,7 @@ export default function Portfolio() {
           <li className="Portfolio__column">
             <Link
               className="Portfolio__link"
-              href="#"
+              href="https://github.com/MSKAlexey/russian-travel"
               alt="Галочка белого цвета"
             >
               Адаптивный сайт
@@ -29,7 +29,7 @@ export default function Portfolio() {
           <li className="Portfolio__column">
             <Link
               className="Portfolio__link"
-              href="#"
+              href="https://github.com/MSKAlexey/react-mesto-api-full-gha"
               alt="Галочка белого цвета"
             >
               Одностраничное приложение

@@ -101,7 +101,7 @@ export default function App() {
     if (loggedIn) {
       Promise.all([api.getUserInfo(), api.getMovies()])
         .then(([data, movie]) => {
-          debugger;
+          // debugger;
           setCurrentUser(data);
           setMovies(movie);
         })

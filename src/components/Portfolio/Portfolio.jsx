@@ -11,8 +11,10 @@ export default function Portfolio() {
           <li className="Portfolio__column">
             <Link
               className="Portfolio__link"
-              url="https://github.com/MSKAlexey/how-to-learn"
+              to="https://github.com/MSKAlexey/how-to-learn"
               alt="Галочка белого цвета"
+              target="_blank"
+              rel="noreferrer"
             >
               Статичный сайт
             </Link>
@@ -20,8 +22,10 @@ export default function Portfolio() {
           <li className="Portfolio__column">
             <Link
               className="Portfolio__link"
-              href="https://github.com/MSKAlexey/russian-travel"
+              to="https://github.com/MSKAlexey/russian-travel"
               alt="Галочка белого цвета"
+              target="_blank"
+              rel="noreferrer"
             >
               Адаптивный сайт
             </Link>
@@ -29,8 +33,10 @@ export default function Portfolio() {
           <li className="Portfolio__column">
             <Link
               className="Portfolio__link"
-              href="https://github.com/MSKAlexey/react-mesto-api-full-gha"
+              to="https://github.com/MSKAlexey/react-mesto-api-full-gha"
               alt="Галочка белого цвета"
+              target="_blank"
+              rel="noreferrer"
             >
               Одностраничное приложение
             </Link>

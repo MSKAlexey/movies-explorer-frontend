@@ -8,13 +8,13 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
-import { ProtectedRoute } from "../ProtectedRoute";
-// import api from "../../utils/Api";
+// import { ProtectedRoute } from "../ProtectedRoute";
 import * as auth from "../../utils/Auth";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import MenuPopup from "../MenuPopup/MenuPopup";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import api from "../../utils/Api";
 
 export default function App() {
   const handleClickToBack = () => navigate("/");
@@ -97,17 +97,17 @@ export default function App() {
       });
   }
   // хук для начальной загрузки карточек с сервера и получение имя и профессии пользователя профиля. проверка на присутствие jwt токена в локальном хранилище
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     Promise.all([api.getUserInfo(), api.getMovies()])
-  //       .then(([data, movie]) => {
-  //         // debugger;
-  //         setCurrentUser(data);
-  //         setMovies(movie);
-  //       })
-  //       .catch(console.log);
-  //   }
-  // }, [loggedIn]);
+  useEffect(() => {
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(), api.getMovies()])
+        .then(([data, movie]) => {
+          debugger;
+          setCurrentUser(data);
+          setMovies(movie);
+        })
+        .catch(console.log);
+    }
+  }, [loggedIn]);
 
   // удаляем jwt токен из локального хранилища, выходим из профиля и переходим на главную страницу
   function logOut() {

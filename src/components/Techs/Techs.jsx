@@ -4,7 +4,7 @@ export default function Techs() {
   return (
     <section className="Techs">
       <div className="Techs__container">
-        <div className="Techs__title_container">
+        <div className="Techs__title-container">
           <p className="Techs__title">Технологии</p>
         </div>
         <p className="Techs__subtitle">7 технологий</p>

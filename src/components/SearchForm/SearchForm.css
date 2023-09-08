@@ -37,8 +37,8 @@
   margin: 0;
 }
 
-.SearchForm__input:active + .SearchForm__container {
-  background: red;
+.SearchForm__container:focus-within {
+  background: #1b1717;
 }
 
 .SearchForm__button {

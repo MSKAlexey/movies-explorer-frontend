@@ -50,6 +50,20 @@
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.12);
 }
 
+.MoviesCard__icon-close {
+  background: url(../../images/iconClose.svg) no-repeat center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: #313131;
+  visibility: hidden;
+}
+
+.MoviesCard__item:hover .MoviesCard__icon-close {
+  visibility: visible;
+}
+
 .MoviesCard__time {
   color: #8b8b8b;
   font-family: "Inter", "Arial", "Helvetica", sans-serif;

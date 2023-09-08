@@ -1,6 +1,9 @@
 import "./MoviesCard.css";
+import { useLocation } from "react-router-dom";
 
 export default function MoviesCard({ card, like }) {
+  const location = useLocation();
+
   const cardLikeButtonClassName = `MoviesCard__icon cursor ${
     like && "MoviesCard__icon_active"
   }`;
@@ -23,7 +26,12 @@ export default function MoviesCard({ card, like }) {
         <div className="MoviesCard__like">
           <button
             type="button"
-            className={cardLikeButtonClassName}
+            // className={cardLikeButtonClassName}
+            className={`${
+              location.pathname === "/movies"
+                ? cardLikeButtonClassName
+                : "MoviesCard__icon-close"
+            }`}
 
             // onClick={handleLikeClick}
           ></button>

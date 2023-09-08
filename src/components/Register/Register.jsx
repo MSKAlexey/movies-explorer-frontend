@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 import logo from "../../images/logo.svg";
+import { useFormWithValidation } from "../../hooks/Validate";
 
-export default function Register({
-  handelRegisterSubmit /* , errorMessage  */,
-}) {
+export default function Register({ handelRegisterSubmit }) {
+  const { errors } = useFormWithValidation();
+
   const [formValue, setFormValue] = useState({
     name: "",
     email: "",
@@ -50,7 +51,7 @@ export default function Register({
                 onChange={handleChange}
               />
               <span id="input-name-error" className="Register__error">
-                {/* errorMessage */}
+                {errors}
               </span>
             </div>
 

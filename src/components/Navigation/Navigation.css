@@ -78,7 +78,7 @@
 }
 
 @media screen and (min-width: 800px) {
-  .Navigation__container {
+  .Navigation {
     min-width: 88%;
   }
   .Navigation__menu-container {
@@ -133,5 +133,8 @@
     position: relative;
     top: -4px;
     right: -7px;
+  }
+  .Navigation__image_background-color_main {
+    background-color: #313131;
   }
 }

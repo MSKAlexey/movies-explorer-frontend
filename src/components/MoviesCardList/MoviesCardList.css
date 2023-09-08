@@ -3,7 +3,7 @@
   width: 300px;
 }
 
-.MoviesCardList__container {
+.MoviesCard {
   display: grid;
   gap: 34px;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -41,7 +41,7 @@
     width: 708px;
     margin: 78px auto 0;
   }
-  .MoviesCardList__container {
+  .MoviesCard {
     gap: 30px;
     grid-template-columns: repeat(2, 339px);
   }
@@ -52,7 +52,7 @@
     width: 1140px;
     padding: 2px 0 64px 0;
   }
-  .MoviesCardList__container {
+  .MoviesCard {
     gap: 20px;
     grid-template-columns: repeat(4, 270px);
   }

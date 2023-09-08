@@ -29,6 +29,7 @@
   min-width: 260px;
   height: 45px;
   outline: none;
+  border: none;
 }
 
 .Login__form {

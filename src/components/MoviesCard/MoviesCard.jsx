@@ -15,12 +15,12 @@ export default function MoviesCard({ card, like }) {
     <li className="MoviesCard__item">
       <img
         src={`https://api.nomoreparties.co/${card.image.url}`}
-        alt=""
+        alt={card.nameRU}
         className="MoviesCard__image cursor"
       />
-      <div className="MoviesCard__title-icon">
-        <h2 className="MoviesCard__title">{card.nameRU}</h2>
-        <div className="MoviesCard_like-count">
+      <div className="MoviesCard__title">
+        <h2 className="MoviesCard__title-text">{card.nameRU}</h2>
+        <div className="MoviesCard__like">
           <button
             type="button"
             className={cardLikeButtonClassName}

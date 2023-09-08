@@ -26,9 +26,11 @@ export default function AboutProject() {
           </div>
         </div>
         <ul className="AboutProject__period">
+          {/* <li className="AboutProject__back-end AboutProject__period_time_position"> */}
           <li className="AboutProject__back-end AboutProject__period_time_position">
             1 неделя
           </li>
+          {/* <li className="AboutProject__front-end AboutProject__period_time_position"> */}
           <li className="AboutProject__front-end AboutProject__period_time_position">
             4 недели
           </li>

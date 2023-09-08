@@ -4,7 +4,7 @@ import "./MoviesCardList.css";
 export default function MoviesCardList({ cards, like }) {
   return (
     <section className="MoviesCardList">
-      <ul className="MoviesCardList__container">
+      <ul className="MoviesCard">
         {cards.map((card) => (
           <MoviesCard card={card} like={like} />
         ))}

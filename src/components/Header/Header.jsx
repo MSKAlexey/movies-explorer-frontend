@@ -9,7 +9,7 @@ export default function Header({ loggedIn, isOpenMenu, onClickMenu }) {
 
   return (
     <header
-      className={`Header__container Header_background-color_${
+      className={`Header Header_background-color_${
         location.pathname === "/" ? "landing" : "main"
       }`}
     >

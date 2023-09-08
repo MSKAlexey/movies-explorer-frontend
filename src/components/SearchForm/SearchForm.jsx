@@ -10,10 +10,11 @@ export default function SearchForm() {
             <div className="SearchForm__icon-search"></div>
             <input
               type="text"
-              className="SearchForm__input"
+              className="SearchForm__input cursor"
               placeholder="Фильм"
+              required
             />
-            <button className="SearchForm__button">Найти</button>
+            <button className="SearchForm__button cursor">Найти</button>
           </form>
         </div>
         <FilterCheckbox />

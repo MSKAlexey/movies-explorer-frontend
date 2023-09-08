@@ -6,7 +6,7 @@ export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
   return (
     <>
       {loggedIn ? (
-        <nav className="Navigation__container">
+        <nav className="Navigation">
           <div
             className={`Navigation__list Navigation__list_logged Navigation__list_state_${
               isOpenMenu ? "open" : "close"

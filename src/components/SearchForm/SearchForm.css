@@ -37,8 +37,8 @@
   margin: 0;
 }
 
-.SearchForm__form-container:hover + .SearchForm__container {
-  background-color: hsla(61, 86%, 45%, 0.336);
+.SearchForm__input:active + .SearchForm__container {
+  background: red;
 }
 
 .SearchForm__button {

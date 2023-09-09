@@ -1,17 +1,13 @@
 import "./Navigation.css";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
+export default function Navigation({ loggedIn, onClickMenu }) {
   const location = useLocation();
   return (
     <>
       {loggedIn ? (
         <nav className="Navigation">
-          <div
-            className={`Navigation__list Navigation__list_logged Navigation__list_state_${
-              isOpenMenu ? "open" : "close"
-            }`}
-          >
+          <div className="Navigation__list">
             <div className="Navigation__movie-container">
               <div className="Navigation__unit">
                 <NavLink
@@ -63,11 +59,7 @@ export default function Navigation({ loggedIn, isOpenMenu, onClickMenu }) {
 
           <button
             type="button"
-            className={`${
-              isOpenMenu
-                ? "Navigation__menu Navigation__menu_close"
-                : "Navigation__menu"
-            }`}
+            className="Navigation__menu"
             onClick={onClickMenu}
           ></button>
         </nav>

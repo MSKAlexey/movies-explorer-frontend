@@ -25,12 +25,10 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
   const [like, isLiked] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleLogin = (email) => {
     setLoggedIn(true);
@@ -131,7 +129,7 @@ export default function App() {
                 <>
                   <Header
                     loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
+                    isOpenMenu={isMenuPopup}
                     onClickMenu={handleMenuClick}
                   />
                   <Main />
@@ -146,7 +144,7 @@ export default function App() {
                 <>
                   <Header
                     loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
+                    isOpenMenu={isMenuPopup}
                     onClickMenu={handleMenuClick}
                   />
                   <Movies like={like} />
@@ -161,7 +159,7 @@ export default function App() {
                 <>
                   <Header
                     loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
+                    isOpenMenu={isMenuPopup}
                     onClickMenu={handleMenuClick}
                   />
                   <SavedMovies like={like} />
@@ -172,22 +170,12 @@ export default function App() {
 
             <Route
               path="/sign-in"
-              element={
-                <Login
-                  handelLoginSubmit={handelLoginSubmit}
-                  isSubmit={isSubmit}
-                />
-              }
+              element={<Login handelLoginSubmit={handelLoginSubmit} />}
             />
 
             <Route
               path="/sign-up"
-              element={
-                <Register
-                  handelRegisterSubmit={handelRegisterSubmit}
-                  isSubmit={isSubmit}
-                />
-              }
+              element={<Register handelRegisterSubmit={handelRegisterSubmit} />}
             />
 
             <Route
@@ -196,7 +184,7 @@ export default function App() {
                 <>
                   <Header
                     loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
+                    isOpenMenu={isMenuPopup}
                     onClickMenu={handleMenuClick}
                   />
                   <Profile

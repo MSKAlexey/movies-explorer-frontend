@@ -18,22 +18,17 @@ import api from "../../utils/Api";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 export default function App() {
-  const handleClickToBack = () => navigate("/");
-  const handleClickToExitProfile = () => navigate("/");
+  const navigate = useNavigate();
+  const handleClickToRedirectMainPage = () => navigate("/");
   const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
   const [like, isLiked] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
-
-  const handleLogin = (email) => {
-    setLoggedIn(true);
-    setUserData(email);
-  };
+  const [isSubmit, setIsSubmit] = useState(false);
 
   // проверка токена
   function tokenCheck() {
@@ -41,8 +36,8 @@ export default function App() {
     if (jwt) {
       auth
         .getContent()
-        .then((user) => {
-          handleLogin(user.email);
+        .then(() => {
+          setLoggedIn(true);
           navigate("/");
         })
         .catch(console.log);
@@ -87,8 +82,8 @@ export default function App() {
       .then((data) => {
         if (data) {
           localStorage.setItem("jwt", data.token);
-          handleLogin(email);
-          navigate("/main");
+          setLoggedIn(true);
+          navigate("/");
         }
       })
       .catch((err) => {
@@ -102,7 +97,7 @@ export default function App() {
     if (loggedIn) {
       Promise.all([api.getUserInfo(), api.getMovies()])
         .then(([data, movie]) => {
-          // debugger;
+          setLoggedIn(true);
           setCurrentUser(data);
           setMovies(movie);
         })
@@ -110,12 +105,25 @@ export default function App() {
     }
   }, [loggedIn]);
 
-  // удаляем jwt токен из локального хранилища, выходим из профиля и переходим на главную страницу
+  // удаляем jwt токен из локального хранилища, выходим из профиля, очищаем данные пользователя
+  // и переходим на главную страницу
   function logOut() {
     setLoggedIn(false);
     localStorage.removeItem("jwt");
     navigate("/");
     setUserData({});
+  }
+
+  // редактируем данные пользователя
+  function handleUpdateUser(data) {
+    debugger;
+    api
+      .changeUserInfo(data)
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
+      .catch(console.log);
   }
 
   return (
@@ -170,12 +178,22 @@ export default function App() {
 
             <Route
               path="/sign-in"
-              element={<Login handelLoginSubmit={handelLoginSubmit} />}
+              element={
+                <Login
+                  handelLoginSubmit={handelLoginSubmit}
+                  isSubmit={isSubmit}
+                />
+              }
             />
 
             <Route
               path="/sign-up"
-              element={<Register handelRegisterSubmit={handelRegisterSubmit} />}
+              element={
+                <Register
+                  handelRegisterSubmit={handelRegisterSubmit}
+                  isSubmit={isSubmit}
+                />
+              }
             />
 
             <Route
@@ -189,16 +207,19 @@ export default function App() {
                   />
                   <Profile
                     logOut={logOut}
-                    userData={userData}
-                    onClickExit={handleClickToExitProfile}
+                    Submit={isSubmit}
+                    onSubmit={handleUpdateUser}
+                    onClickExit={handleClickToRedirectMainPage}
                   />
                 </>
               }
             />
 
             <Route
-              path="/not"
-              element={<PageNotFound onClickBack={handleClickToBack} />}
+              path="/pagenotfound"
+              element={
+                <PageNotFound onClickBack={handleClickToRedirectMainPage} />
+              }
             />
 
             <Route path="*" element={<Navigate to="/" replace />} />

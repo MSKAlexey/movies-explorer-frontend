@@ -3,18 +3,35 @@ import { useContext, useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-export default function Profile({ logOut, onClickExit }) {
+export default function Profile({ logOut, isSubmit, Submit }) {
   const { values, handleChange, resetForm, errors, isValid } =
     useFormWithValidation();
 
   const setUserData = useContext(CurrentUserContext);
 
+  const isRequiredСondition =
+    !isValid ||
+    (setUserData.name === values.name && setUserData.email === values.email);
+
+  useEffect(() => {
+    if (setUserData) resetForm(setUserData, {}, true);
+  }, [setUserData, resetForm]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    debugger;
+    console.log(1);
+    Submit(values);
+  };
+
   return (
     <div className="Profile">
       <div className="Profile__container">
         <div className="Profile__top-container">
-          <h1 className="Profile__title">{`Привет, ${setUserData.name ?? ''}!`}</h1>
-          <form action="" className="Profile__form">
+          <h1 className="Profile__title">{`Привет, ${
+            setUserData.name ?? ""
+          }!`}</h1>
+          <form className="Profile__form" onSubmit={handleSubmit}>
             <div className="Profile__input-container">
               <span className="Profile__placeholder">Имя</span>
               <input
@@ -40,13 +57,21 @@ export default function Profile({ logOut, onClickExit }) {
                 onChange={handleChange}
               />
             </div>
+            <div className="Profile__buttons-container">
+              <button
+                className="Profile__edit-button cursor"
+                form="submit"
+                type="submit"
+                // disabled={isRequiredСondition || isSubmit}
+                onSubmit={handleSubmit}
+              >
+                Редактировать
+              </button>
+              <button className="Profile__exit-button cursor" onClick={logOut}>
+                Выйти из аккаунта
+              </button>
+            </div>
           </form>
-        </div>
-        <div className="Profile__buttons-container">
-          <button className="Profile__edit-button cursor">Редактировать</button>
-          <button className="Profile__exit-button cursor" onClick={logOut}>
-            Выйти из аккаунта
-          </button>
         </div>
       </div>
     </div>

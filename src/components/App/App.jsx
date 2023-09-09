@@ -82,7 +82,6 @@ export default function App() {
 
   // субмит формы входа
   function handelLoginSubmit({ email, password }) {
-    debugger;
     auth
       .authorize({ email, password })
       .then((data) => {
@@ -116,6 +115,7 @@ export default function App() {
     setLoggedIn(false);
     localStorage.removeItem("jwt");
     navigate("/");
+    setUserData({});
   }
 
   return (

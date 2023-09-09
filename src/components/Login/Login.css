@@ -32,6 +32,14 @@
   border: none;
 }
 
+.Login__button:disabled {
+  background-color: #8b8b8b;
+}
+
+.Login__button:disabled {
+  cursor: no-drop;
+}
+
 .Login__form {
   padding: 80px 0 0 0;
   display: grid;

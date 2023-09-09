@@ -25,13 +25,12 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  // const [loggedIn, setLoggedIn] = useState(true);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  // const [isOpenMenu, setIsOpenMenu] = useState(true);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
   const [like, isLiked] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleLogin = (email) => {
     setLoggedIn(true);
@@ -85,7 +84,7 @@ export default function App() {
 
   // субмит формы входа
   function handelLoginSubmit({ email, password }) {
-    debugger
+    debugger;
     auth
       .authorize({ email, password })
       .then((data) => {
@@ -173,12 +172,22 @@ export default function App() {
 
             <Route
               path="/sign-in"
-              element={<Login handelLoginSubmit={handelLoginSubmit} />}
+              element={
+                <Login
+                  handelLoginSubmit={handelLoginSubmit}
+                  isSubmit={isSubmit}
+                />
+              }
             />
 
             <Route
               path="/sign-up"
-              element={<Register handelRegisterSubmit={handelRegisterSubmit} />}
+              element={
+                <Register
+                  handelRegisterSubmit={handelRegisterSubmit}
+                  isSubmit={isSubmit}
+                />
+              }
             />
 
             <Route

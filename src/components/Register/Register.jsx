@@ -4,7 +4,7 @@ import "./Register.css";
 import logo from "../../images/logo.svg";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-export default function Register({ handelRegisterSubmit }) {
+export default function Register({ handelRegisterSubmit, isSubmit }) {
   const { values, handleChange, resetForm, errors, isValid } =
     useFormWithValidation();
 
@@ -85,6 +85,7 @@ export default function Register({ handelRegisterSubmit }) {
               type="submit"
               name="button"
               className="Register__button cursor"
+              disabled={!isValid || isSubmit}
             >
               {"Зарегистрироваться"}
             </button>

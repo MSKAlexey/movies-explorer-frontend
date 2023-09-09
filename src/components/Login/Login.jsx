@@ -4,7 +4,7 @@ import "./Login.css";
 import logo from "../../images/logo.svg";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-export default function Login({ handelLoginSubmit }) {
+export default function Login({ handelLoginSubmit, isSubmit }) {
   const { values, handleChange, resetForm, errors, isValid } =
     useFormWithValidation();
 
@@ -64,6 +64,7 @@ export default function Login({ handelLoginSubmit }) {
               type="submit"
               name="button"
               className="Login__button cursor"
+              disabled={!isValid || isSubmit}
             >
               {"Войти"}
             </button>

@@ -1,4 +1,4 @@
-class Api {
+class MainApi {
   constructor() {
     // this._url = 'https://api.alexey.nomoredomains.xyz';
     // this._url = "http://localhost:3000";
@@ -10,17 +10,6 @@ class Api {
       return res.json();
     }
     return Promise.reject(`Произошла ошибка`);
-  }
-
-  getMovies() {
-    const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/movies`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then(this._checkStatusResponse);
   }
 
   addCard({ name, link }) {
@@ -121,5 +110,5 @@ class Api {
     }
   }
 }
-const api = new Api();
-export default api;
+const mainApi = new MainApi();
+export default mainApi;

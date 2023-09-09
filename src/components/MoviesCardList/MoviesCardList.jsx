@@ -6,7 +6,7 @@ export default function MoviesCardList({ cards, like }) {
     <section className="MoviesCardList">
       <ul className="MoviesCard">
         {cards.map((card) => (
-          <MoviesCard card={card} like={like} />
+          <MoviesCard key={card._id} card={card} />
         ))}
       </ul>
       <div className="MoviesCardList__more">

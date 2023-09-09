@@ -16,6 +16,8 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import api from "../../utils/Api";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import mainApi from "../../utils/MainApi";
+import moviesApi from "../../utils/MoviesApi";
 
 export default function App() {
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ export default function App() {
   const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [movies, setMovies] = useState([]);
+  const [cards, setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({ email: "" });
   const [like, isLiked] = React.useState(false);
@@ -94,12 +96,14 @@ export default function App() {
   }
   // хук для начальной загрузки карточек с сервера и получение имя и профессии пользователя профиля. проверка на присутствие jwt токена в локальном хранилище
   useEffect(() => {
+    // debugger
     if (loggedIn) {
-      Promise.all([api.getUserInfo(), api.getMovies()])
-        .then(([data, movie]) => {
+      Promise.all([api.getUserInfo(), moviesApi.getMovies()])
+        .then(([data, cards]) => {
           setLoggedIn(true);
           setCurrentUser(data);
-          setMovies(movie);
+          setCards(cards);
+          console.log(cards);
         })
         .catch(console.log);
     }
@@ -116,8 +120,7 @@ export default function App() {
 
   // редактируем данные пользователя
   function handleUpdateUser(data) {
-    // debugger;
-    api
+    mainApi
       .changeUserInfo(data)
       .then((data) => {
         setCurrentUser(data);
@@ -155,7 +158,7 @@ export default function App() {
                     isOpenMenu={isMenuPopup}
                     onClickMenu={handleMenuClick}
                   />
-                  <Movies like={like} />
+                  <Movies cards={cards} like={like} />
                   <Footer />
                 </>
               }

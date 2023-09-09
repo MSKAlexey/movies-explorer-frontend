@@ -30,8 +30,7 @@ export default function App() {
   // const [isOpenMenu, setIsOpenMenu] = useState(true);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "" });
-  // const [like, isLiked] = React.useState(false);
-  const [like, isLiked] = React.useState(true);
+  const [like, isLiked] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
 
   const handleLogin = (email) => {
@@ -86,6 +85,7 @@ export default function App() {
 
   // субмит формы входа
   function handelLoginSubmit({ email, password }) {
+    debugger
     auth
       .authorize({ email, password })
       .then((data) => {

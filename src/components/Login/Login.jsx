@@ -1,27 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import logo from "../../images/logo.svg";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-export default function Login({ handelLoginSubmit /* errorMessage */ }) {
-  const [formValue, setFormValue] = useState({
-    email: "",
-    password: "",
-  });
+export default function Login({ handelLoginSubmit }) {
+  const { values, handleChange, resetForm, errors, isValid } =
+    useFormWithValidation();
 
-  const { email, password } = formValue;
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValue({
-      ...formValue,
-      [name]: value,
-    });
-  };
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    handelLoginSubmit({ email, password });
+    handelLoginSubmit(values);
   }
 
   return (
@@ -45,8 +38,8 @@ export default function Login({ handelLoginSubmit /* errorMessage */ }) {
                 required
                 onChange={handleChange}
               />
-              <span id="input-name-error" className="error">
-                {/* errorMessage */}
+              <span id="input-name-error" className="Login__error">
+                {errors.email ?? ""}
               </span>
             </div>
             <div className="Login__form-input">
@@ -61,8 +54,8 @@ export default function Login({ handelLoginSubmit /* errorMessage */ }) {
                 required
                 onChange={handleChange}
               />
-              <span id="input-name-error" className="error">
-                {/* errorMessage */}
+              <span id="input-name-error" className="Login__error">
+                {errors.password ?? ""}
               </span>
             </div>
           </div>

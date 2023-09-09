@@ -25,11 +25,11 @@
   font-weight: 500;
   line-height: normal;
   border-radius: 3px;
-
-  background: #4285f4;
+  border: none;
+  background-color: #4285f4;
   margin: 0;
   padding: 0 0 0 0;
-  width: 260px;
+  min-width: 260px;
   height: 45px;
 }
 
@@ -97,7 +97,7 @@
   display: block;
   margin: 0;
   box-sizing: border-box;
-  min-height: 25px;
+  min-height: 30px;
 }
 
 .Register__title-input {

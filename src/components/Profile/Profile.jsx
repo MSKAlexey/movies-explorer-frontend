@@ -62,7 +62,7 @@ export default function Profile({ logOut, isSubmit, Submit }) {
                 className="Profile__edit-button cursor"
                 form="submit"
                 type="submit"
-                // disabled={isRequiredСondition || isSubmit}
+                disabled={isRequiredСondition || isSubmit}
                 onSubmit={handleSubmit}
               >
                 Редактировать

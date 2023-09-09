@@ -116,7 +116,7 @@ export default function App() {
 
   // редактируем данные пользователя
   function handleUpdateUser(data) {
-    debugger;
+    // debugger;
     api
       .changeUserInfo(data)
       .then((data) => {

@@ -25,7 +25,7 @@ export default function Login({ handelLoginSubmit, isSubmit }) {
         </Link>
         <h1 className="Login__title">{"Рады видеть!"}</h1>
 
-        <form className="Login__form " onSubmit={handleSubmit}>
+        <form className="Login__form" onSubmit={handleSubmit}>
           <div className="Login__form-container">
             <div className="Login__form-input">
               <span className="Login__title-input">E-mail</span>

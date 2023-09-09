@@ -129,6 +129,11 @@
     gap: 220px;
   }
   .Profile__form {
-    padding: 124px 0 0 0;
+    padding: 120px 0 0 0;
+    display: grid;
+    gap: 18px;
+  }
+  .Profile__buttons-container {
+    padding: 202px 0 0 0;
   }
 }

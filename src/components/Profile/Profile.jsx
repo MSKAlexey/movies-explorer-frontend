@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-export default function Profile({ logOut, isSubmit, Submit }) {
+export default function Profile({ logOut, isSubmit, onSubmit }) {
   const { values, handleChange, resetForm, errors, isValid } =
     useFormWithValidation();
 
@@ -17,21 +17,20 @@ export default function Profile({ logOut, isSubmit, Submit }) {
     if (setUserData) resetForm(setUserData, {}, true);
   }, [setUserData, resetForm]);
 
-  const handleSubmit = (e) => {
+  function handelSubmit(e) {
     e.preventDefault();
-    debugger;
-    console.log(1);
-    Submit(values);
-  };
+    // debugger;
+    onSubmit(values);
+  }
 
   return (
-    <div className="Profile">
-      <div className="Profile__container">
+    <section className="Profile">
+      <main className="Profile__container">
         <div className="Profile__top-container">
           <h1 className="Profile__title">{`Привет, ${
             setUserData.name ?? ""
           }!`}</h1>
-          <form className="Profile__form" onSubmit={handleSubmit}>
+          <form className="Profile__form" onSubmit={handelSubmit}>
             <div className="Profile__input-container">
               <span className="Profile__placeholder">Имя</span>
               <input
@@ -60,10 +59,7 @@ export default function Profile({ logOut, isSubmit, Submit }) {
             <div className="Profile__buttons-container">
               <button
                 className="Profile__edit-button cursor"
-                form="submit"
-                type="submit"
                 disabled={isRequiredСondition || isSubmit}
-                onSubmit={handleSubmit}
               >
                 Редактировать
               </button>
@@ -73,7 +69,7 @@ export default function Profile({ logOut, isSubmit, Submit }) {
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      </main>
+    </section>
   );
 }

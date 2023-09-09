@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 import logo from "../../images/logo.svg";
+// import { useFormWithValidation } from "../../utils/hooks/Validate";
 
 export default function Register({ handelRegisterSubmit }) {
+  // const { errors } = useFormWithValidation();
 
   const [formValue, setFormValue] = useState({
     name: "",

@@ -15,6 +15,7 @@ import MenuPopup from "../MenuPopup/MenuPopup";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import api from "../../utils/Api";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 export default function App() {
   const handleClickToBack = () => navigate("/");
@@ -31,6 +32,7 @@ export default function App() {
   const [userData, setUserData] = useState({ email: "" });
   // const [like, isLiked] = React.useState(false);
   const [like, isLiked] = React.useState(true);
+  const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
 
   const handleLogin = (email) => {
     setLoggedIn(true);
@@ -63,6 +65,7 @@ export default function App() {
   // закрытие попапов
   function closeAllPopups() {
     setIsMenuPopup(false);
+    setIsRegisterPopupOpen(false);
   }
 
   // субмит формы регистрации
@@ -70,14 +73,15 @@ export default function App() {
     auth
       .register({ name, email, password })
       .then(() => {
-        // setIsRegisterPopupOpen(true);
+        setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);
         navigate("/sign-in");
       })
       .catch((err) => {
         setIsInfoTolltip(false);
         console.log(err);
-      });
+      })
+      .finally(setIsRegisterPopupOpen(true));
   }
 
   // субмит формы входа
@@ -93,6 +97,7 @@ export default function App() {
       })
       .catch((err) => {
         setIsInfoTolltip(false);
+        setIsRegisterPopupOpen(true);
         console.log(err);
       });
   }
@@ -204,6 +209,13 @@ export default function App() {
         </div>
 
         <MenuPopup onClose={closeAllPopups} isOpen={isMenuPopup} />
+
+        <InfoTooltip
+          isOpen={isRegisterPopupOpen}
+          onClose={closeAllPopups}
+          name={"register"}
+          statusRegister={isInfoTolltip}
+        />
       </div>
     </CurrentUserContext.Provider>
   );

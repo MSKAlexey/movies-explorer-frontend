@@ -3,7 +3,7 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
 export default function SearchForm({
-  request,
+  search,
   setRequest,
   onSubmit,
   shorts,
@@ -12,23 +12,22 @@ export default function SearchForm({
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
+    // debugger
     event.preventDefault();
-    if (request === "") {
+    if (search === "") {
       setError("Нужно ввести ключевое слово");
     } else {
       onSubmit();
     }
   };
 
-  const handleRequestChange = (event) => {
+  const handleChange = (event) => {
     // debugger;
     const { value } = event.target;
-
     setRequest(value);
-
-    // if (String(value).length !== 0) {
-    //   setError("");
-    // }
+    if (String(value).length !== 0) {
+      setError("");
+    }
   };
 
   return (
@@ -41,11 +40,11 @@ export default function SearchForm({
               type="text"
               className="SearchForm__input cursor"
               placeholder="Фильм"
-              required
-              name="request"
-              value={request || ""}
-              onChange={handleRequestChange}
+              name="search"
+              value={search || ""}
+              onChange={handleChange}
             />
+
             <button className="SearchForm__button cursor" type="submit">
               Найти
             </button>
@@ -53,6 +52,9 @@ export default function SearchForm({
         </div>
         <FilterCheckbox shorts={shorts} setShorts={setShorts} />
       </div>
+      <span id="input-name-error" className="SearchForm__error">
+        {error}
+      </span>
     </section>
   );
 }

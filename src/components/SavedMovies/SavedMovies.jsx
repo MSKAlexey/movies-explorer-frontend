@@ -74,7 +74,7 @@ export default function SavedMovies() {
   return (
     <main className="SavedMovies">
       <SearchForm
-        request={request}
+        search={request}
         setRequest={setRequest}
         onSubmit={onSubmitForm}
         shorts={shorts}

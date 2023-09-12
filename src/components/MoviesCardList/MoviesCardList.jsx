@@ -57,12 +57,6 @@ export default function MoviesCardList({
   return (
     <section className="MoviesCardList">
       <ul className="MoviesCard">
-        {/* {requestError && (
-          <p>
-            Во время запроса произошла ошибка. Возможно, проблема с соединением
-            или сервер недоступен. Подождите немного и попробуйте ещё раз.
-          </p>
-        )} */}
         {!requestError && cards.length > 0
           ? cards.slice(0, cardsCount).map((card) => {
               const thumbnail = fromSavedPage
@@ -72,7 +66,6 @@ export default function MoviesCardList({
               const imageUrl = fromSavedPage
                 ? card.image
                 : `${BASE_URL}${card.image.url}`;
-
               return (
                 <MoviesCard
                   card={card}
@@ -95,9 +88,11 @@ export default function MoviesCardList({
                 />
               );
             })
-          : !isInitial && <p>Ничего не найдено</p>}
+          : !isInitial && (
+              <p className="MoviesCardList__error">Ничего не найдено</p>
+            )}
       </ul>
-
+      ;
       <div className="MoviesCardList__more">
         {cards.length > 0 && cardsCount < cards.length && (
           <button

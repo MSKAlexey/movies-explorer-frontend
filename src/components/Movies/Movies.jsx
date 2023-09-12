@@ -90,7 +90,7 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
   return (
     <main className="Movies">
       <SearchForm
-        request={request}
+        search={request}
         setRequest={setRequest}
         onSubmit={onSubmitForm}
         shorts={shorts}

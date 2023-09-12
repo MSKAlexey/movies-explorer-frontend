@@ -109,11 +109,6 @@ export default function App() {
   // и переходим на главную страницу
   function logOut() {
     setLoggedIn(false);
-    // localStorage.removeItem("jwt");
-    // localStorage.removeItem("cards");
-    // localStorage.removeItem("request");
-    // localStorage.removeItem("fCards");
-    // localStorage.removeItem("shorts");
     localStorage.clear();
     navigate("/");
     setUserData({});

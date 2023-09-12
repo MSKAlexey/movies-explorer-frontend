@@ -2,7 +2,7 @@ import "./MoviesCard.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext, useEffect, useState } from "react";
 import mainApi from "../../utils/MainApi";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function MoviesCard({
   fromSavedPage,
@@ -106,7 +106,9 @@ export default function MoviesCard({
 
   return (
     <li className="MoviesCard__item">
-      <img src={image} alt={nameRU} className="MoviesCard__image cursor" />
+      <Link to={trailerLink} target="_blank">
+        <img src={image} alt={nameRU} className="MoviesCard__image cursor" />
+      </Link>
       <div className="MoviesCard__title">
         <h2 className="MoviesCard__title-text">{nameRU}</h2>
         <div className="MoviesCard__like">

@@ -92,7 +92,6 @@ export default function MoviesCardList({
               <p className="MoviesCardList__error">Ничего не найдено</p>
             )}
       </ul>
-      ;
       <div className="MoviesCardList__more">
         {cards.length > 0 && cardsCount < cards.length && (
           <button

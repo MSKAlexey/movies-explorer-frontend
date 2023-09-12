@@ -25,8 +25,7 @@ export default function App() {
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({ email: "" });
-  const [like, isLiked] = useState(false);
+  // const [userData, setUserData] = useState({ email: "" });
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   // const [isSubmit, setIsSubmit] = useState(false);
   const [firstSubmit, setFirstSubmit] = useState(true);
@@ -111,7 +110,7 @@ export default function App() {
     setLoggedIn(false);
     localStorage.clear();
     navigate("/");
-    setUserData({});
+    // setUserData({});
     setFirstSubmit(true);
   }
 
@@ -175,7 +174,7 @@ export default function App() {
                     isOpenMenu={isMenuPopup}
                     onClickMenu={handleMenuClick}
                   />
-                  <SavedMovies like={like} />
+                  <SavedMovies />
                   <Footer />
                 </>
               }

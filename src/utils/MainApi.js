@@ -59,6 +59,38 @@ class MainApi {
       body: JSON.stringify({ name, email }),
     }).then(this._checkStatusResponse);
   }
+
+  addLike(cardId) {
+    const token = localStorage.getItem("jwt");
+    debugger;
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkStatusResponse);
+  }
+
+  deleteLike(cardId) {
+    const token = localStorage.getItem("jwt");
+    debugger;
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkStatusResponse);
+  }
+
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.addLike(cardId);
+    } else {
+      return this.deleteLike(cardId);
+    }
+  }
 }
 const mainApi = new MainApi();
 export default mainApi;

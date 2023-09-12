@@ -63,6 +63,7 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
 
   useEffect(() => {
     setIsLoading(true);
+    debugger
     mainApi
       .getSavedMovies()
       .then((data) => {

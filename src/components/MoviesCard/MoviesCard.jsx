@@ -42,9 +42,7 @@ export default function MoviesCard({
       .then(() => {
         setIsSavedState(false);
         setCurrentMovieId("");
-        // if (cardsUpdate) {
         setCardsUpdate(cardsUpdate + 1);
-        // }
       })
       .catch((error) => {
         console.log(error);

@@ -1,15 +1,111 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Preloader from "../Preloader/Preloader";
+import moviesApi from "../../utils/MoviesApi";
+import mainApi from "../../utils/MainApi";
 
-export default function Movies({ cards, like }) {
+export default function Movies({ firstSubmit, setFirstSubmit }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [cards, setCards] = useState(
+    JSON.parse(localStorage.getItem("cards")) || []
+  );
+  const [fCards, setFCards] = useState(
+    JSON.parse(localStorage.getItem("fCards")) || []
+  );
+  const [request, setRequest] = React.useState(
+    localStorage.getItem("request") || ""
+  );
+
+  const [shorts, setShorts] = useState(
+    localStorage.getItem("shorts") === "true"
+  );
+  const [requestError, setRequestError] = useState(false);
+  const [isInitial, setIsInitial] = useState(true);
+  const [savedMovies, setSavedMoives] = useState([""]);
+
+  console.log(savedMovies);
+
+  const filterCards = () => {
+    return cards.filter((element) => {
+      if (!shorts && element.duration < 40) return false;
+      else if (
+        element.nameRU.toLowerCase().includes(request.toLowerCase()) ||
+        element.nameEN.toLowerCase().includes(request.toLowerCase())
+      )
+        return true;
+      else return false;
+    });
+  };
+
+  const onSubmitForm = () => {
+    if (firstSubmit) {
+      setIsInitial(false);
+      setIsLoading(true);
+      setFirstSubmit(false);
+      moviesApi
+        .getMovies()
+        .then((card) => {
+          setCards(card);
+          localStorage.setItem("cards", JSON.stringify(card));
+          localStorage.setItem("request", request);
+          localStorage.setItem("shorts", shorts);
+          setFCards(filterCards());
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          console.log(error);
+          setRequestError(true);
+        });
+    } else {
+      localStorage.setItem("request", request);
+      localStorage.setItem("shorts", shorts);
+      setFCards(filterCards());
+    }
+  };
+
+  useEffect(() => {
+    // debugger;
+    mainApi
+      .getSavedMovies()
+      .then((data) => {
+        setSavedMoives(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [fCards]);
+
+  useEffect(() => {
+    localStorage.setItem("fCards", JSON.stringify(fCards));
+    setFCards(filterCards());
+  }, [cards]);
+
+  useEffect(() => {
+    localStorage.setItem("shorts", shorts);
+    setFCards(filterCards());
+  }, [shorts]);
 
   return (
     <main className="Movies">
-      <SearchForm />
-      {isLoading ? <Preloader /> : <MoviesCardList cards={cards} like={like} />}
+      <SearchForm
+        request={request}
+        setRequest={setRequest}
+        onSubmit={onSubmitForm}
+        shorts={shorts}
+        setShorts={setShorts}
+      />
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList
+          isInitial={isInitial}
+          cards={fCards}
+          requestError={requestError}
+          savedMovies={savedMovies}
+        />
+      )}
     </main>
   );
 }

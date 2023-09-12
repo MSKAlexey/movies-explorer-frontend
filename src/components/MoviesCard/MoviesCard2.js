@@ -1,10 +1,9 @@
 import "./MoviesCard.css";
+import React from "react";
+import mainApi, { saveMovie, deleteMovie } from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext, useEffect, useState } from "react";
-import mainApi from "../../utils/MainApi";
-import { useLocation } from "react-router-dom";
 
-export default function MoviesCard({
+function MoviesCard({
   fromSavedPage,
   country,
   director,
@@ -21,22 +20,28 @@ export default function MoviesCard({
   cardsUpdate,
   setCardsUpdate,
 }) {
-  const currentUser = useContext(CurrentUserContext);
-  const location = useLocation();
+  const currentUser = React.useContext(CurrentUserContext);
+  console.log(savedMovies);
 
-  const [isSavedState, setIsSavedState] = useState(
+  const [isSavedState, setIsSavedState] = React.useState(
     savedMovies.some((movie) => {
       return movie.movieId === movieId && movie.owner === currentUser._id;
     })
   );
 
-  const [currentMovieId, setCurrentMovieId] = useState(
+  const [currentMovieId, setCurrentMovieId] = React.useState(
     savedMovies.find((movie) => {
       return movie.movieId === movieId && movie.owner === currentUser._id;
     }) || ""
   );
 
+  const hours = Math.trunc(duration / 60);
+  const minutes = duration % 60;
+  const hoursString = hours > 0 ? `${hours} ч` : "";
+  const minutesString = minutes > 0 ? `${minutes} мин` : "";
+
   const hadleRemoveBtn = () => {
+    // debugger
     mainApi
       .deleteMovie(currentMovieId)
       .then(() => {
@@ -79,8 +84,8 @@ export default function MoviesCard({
     }
   };
 
-  useEffect(() => {
-    // debugger;
+  React.useEffect(() => {
+    // debugger
     const isSaved = savedMovies.some((movie) => {
       return movie.movieId === movieId && movie.owner === currentUser._id;
     });
@@ -92,13 +97,8 @@ export default function MoviesCard({
 
     setIsSavedState(isSaved);
     setCurrentMovieId(currentMovie._id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [savedMovies]);
-
-  function convert(mins) {
-    const hours = Math.floor(mins / 60);
-    const minutes = mins % 60;
-    return hours + "ч " + minutes + "м";
-  }
 
   const cardLikeButtonClassName = `MoviesCard__icon cursor ${
     isSavedState && "MoviesCard__icon_active"
@@ -113,6 +113,7 @@ export default function MoviesCard({
           <button
             type="button"
             className={`${
+              // eslint-disable-next-line no-restricted-globals
               location.pathname === "/movies"
                 ? cardLikeButtonClassName
                 : "MoviesCard__icon-close"
@@ -121,7 +122,9 @@ export default function MoviesCard({
           ></button>
         </div>
       </div>
-      <div className="MoviesCard__time">{convert(duration)}</div>
+      <div className="MoviesCard__time">{}</div>
     </li>
   );
 }
+
+export default MoviesCard;

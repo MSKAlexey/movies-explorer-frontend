@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -17,7 +17,6 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import api from "../../utils/Api";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import mainApi from "../../utils/MainApi";
-import moviesApi from "../../utils/MoviesApi";
 
 export default function App() {
   const navigate = useNavigate();
@@ -25,30 +24,29 @@ export default function App() {
   const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [cards, setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({ email: "" });
-  const [like, isLiked] = React.useState(false);
+  const [like, isLiked] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
+  const [firstSubmit, setFirstSubmit] = useState(true);
 
   // проверка токена
   function tokenCheck() {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      auth
-        .getContent()
-        .then(() => {
-          setLoggedIn(true);
-          navigate("/");
-        })
-        .catch(console.log);
-    }
+    auth
+      .getContent()
+      .then(() => {
+        setLoggedIn(true);
+      })
+      .catch(console.log);
   }
 
   // проверка токена при ребуте страницы
   useEffect(() => {
-    tokenCheck();
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      tokenCheck();
+    }
   }, []);
 
   // открытие попапов
@@ -98,12 +96,10 @@ export default function App() {
   useEffect(() => {
     // debugger
     if (loggedIn) {
-      Promise.all([api.getUserInfo(), moviesApi.getMovies()])
-        .then(([data, cards]) => {
+      Promise.all([api.getUserInfo()])
+        .then(([data]) => {
           setLoggedIn(true);
           setCurrentUser(data);
-          setCards(cards);
-          console.log(cards);
         })
         .catch(console.log);
     }
@@ -113,18 +109,26 @@ export default function App() {
   // и переходим на главную страницу
   function logOut() {
     setLoggedIn(false);
-    localStorage.removeItem("jwt");
+    // localStorage.removeItem("jwt");
+    // localStorage.removeItem("cards");
+    // localStorage.removeItem("request");
+    // localStorage.removeItem("fCards");
+    // localStorage.removeItem("shorts");
+    localStorage.clear();
     navigate("/");
     setUserData({});
+    setFirstSubmit(true);
   }
 
-  // редактируем данные пользователя
+  // субмит формы редактирования данных пользователя
   function handleUpdateUser(data) {
+    // debugger
     mainApi
       .changeUserInfo(data)
       .then((data) => {
         setCurrentUser(data);
-        closeAllPopups();
+        setIsRegisterPopupOpen(true);
+        setIsInfoTolltip(true);
       })
       .catch(console.log);
   }
@@ -158,7 +162,10 @@ export default function App() {
                     isOpenMenu={isMenuPopup}
                     onClickMenu={handleMenuClick}
                   />
-                  <Movies cards={cards} like={like} />
+                  <Movies
+                    firstSubmit={firstSubmit}
+                    setFirstSubmit={setFirstSubmit}
+                  />
                   <Footer />
                 </>
               }
@@ -184,7 +191,7 @@ export default function App() {
               element={
                 <Login
                   handelLoginSubmit={handelLoginSubmit}
-                  isSubmit={isSubmit}
+                  // isSubmit={isSubmit}
                 />
               }
             />
@@ -194,7 +201,7 @@ export default function App() {
               element={
                 <Register
                   handelRegisterSubmit={handelRegisterSubmit}
-                  isSubmit={isSubmit}
+                  // isSubmit={isSubmit}
                 />
               }
             />
@@ -210,9 +217,13 @@ export default function App() {
                   />
                   <Profile
                     logOut={logOut}
-                    Submit={isSubmit}
+                    // Submit={isSubmit}
                     onSubmit={handleUpdateUser}
                     onClickExit={handleClickToRedirectMainPage}
+                    // isOpen={isRegisterPopupOpen}
+                    // onClose={closeAllPopups}
+                    // name={"register"}
+                    // statusRegister={isInfoTolltip}
                   />
                 </>
               }

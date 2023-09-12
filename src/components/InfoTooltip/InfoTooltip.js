@@ -17,9 +17,7 @@ export default function InfoTooltip({ isOpen, onClose, name, statusRegister }) {
           }`}
         ></div>
         <h2 className="popup__title">
-          {statusRegister
-            ? "Вы успешно зарегистрировались!"
-            : "Что-то пошло не так! Попробуйте еще раз"}
+          {statusRegister ? "Все получилось!" : "Что-то пошло не так!"}
         </h2>
         <button
           type="button"

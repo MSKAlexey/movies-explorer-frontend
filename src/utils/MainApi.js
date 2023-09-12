@@ -1,7 +1,5 @@
 class MainApi {
   constructor() {
-    // this._url = 'https://api.alexey.nomoredomains.xyz';
-    // this._url = "http://localhost:3000";
     this._url = "https://api.alexey.nomoreparties.co";
   }
 
@@ -12,44 +10,45 @@ class MainApi {
     return Promise.reject(`Произошла ошибка`);
   }
 
-  addCard({ name, link }) {
+  getSavedMovies = () => {
     const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/cards`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        name: name,
-        link: link,
-      }),
-    }).then(this._checkStatusResponse);
-  }
-
-  deleteCard(cardId) {
-    const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/cards/${cardId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then(this._checkStatusResponse);
-  }
-
-  getUserInfo() {
-    const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}/movies`, {
       method: "GET",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     }).then(this._checkStatusResponse);
-  }
+  };
 
-  changeUserInfo(data) {
+  saveMovie = (movie) => {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}/movies`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(movie),
+    }).then(this._checkStatusResponse);
+  };
+
+  deleteMovie = (id) => {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}/movies/${id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkStatusResponse);
+  };
+
+  changeUserInfo({ name, email }) {
+    // debugger;
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
@@ -57,57 +56,8 @@ class MainApi {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-      }),
+      body: JSON.stringify({ name, email }),
     }).then(this._checkStatusResponse);
-  }
-
-  changeUserAvatar(link) {
-    const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/users/me/avatar`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        avatar: link,
-      }),
-    }).then(this._checkStatusResponse);
-  }
-
-  addLike(cardId) {
-    const token = localStorage.getItem("jwt");
-    debugger;
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then(this._checkStatusResponse);
-  }
-
-  deleteLike(cardId) {
-    const token = localStorage.getItem("jwt");
-    debugger;
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then(this._checkStatusResponse);
-  }
-
-  changeLikeCardStatus(cardId, isLiked) {
-    if (isLiked) {
-      return this.addLike(cardId);
-    } else {
-      return this.deleteLike(cardId);
-    }
   }
 }
 const mainApi = new MainApi();

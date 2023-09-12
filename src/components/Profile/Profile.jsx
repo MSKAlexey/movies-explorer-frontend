@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-export default function Profile({ logOut, isSubmit, onSubmit }) {
+export default function Profile({ logOut, onSubmit }) {
   const { values, handleChange, resetForm, errors, isValid } =
     useFormWithValidation();
 
@@ -59,7 +59,7 @@ export default function Profile({ logOut, isSubmit, onSubmit }) {
             <div className="Profile__buttons-container">
               <button
                 className="Profile__edit-button cursor"
-                disabled={isRequiredСondition || isSubmit}
+                disabled={isRequiredСondition /* || isSubmit */}
               >
                 Редактировать
               </button>

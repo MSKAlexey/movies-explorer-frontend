@@ -1,6 +1,6 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Preloader from "../Preloader/Preloader";
 import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
@@ -13,9 +13,7 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
   const [fCards, setFCards] = useState(
     JSON.parse(localStorage.getItem("fCards")) || []
   );
-  const [request, setRequest] = React.useState(
-    localStorage.getItem("request") || ""
-  );
+  const [request, setRequest] = useState(localStorage.getItem("request") || "");
 
   const [shorts, setShorts] = useState(
     localStorage.getItem("shorts") === "true"
@@ -23,8 +21,6 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
   const [requestError, setRequestError] = useState(false);
   const [isInitial, setIsInitial] = useState(true);
   const [savedMovies, setSavedMoives] = useState([""]);
-
-  console.log(savedMovies);
 
   const filterCards = () => {
     return cards.filter((element) => {
@@ -66,10 +62,11 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
   };
 
   useEffect(() => {
-    // debugger;
+    setIsLoading(true);
     mainApi
       .getSavedMovies()
       .then((data) => {
+        setIsLoading(false);
         setSavedMoives(data);
       })
       .catch((error) => {

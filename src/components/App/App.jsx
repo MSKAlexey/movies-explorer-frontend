@@ -83,7 +83,7 @@ export default function App() {
         if (data) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
-          navigate("/");
+          navigate("/movies");
         }
       })
       .catch((err) => {

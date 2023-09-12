@@ -9,21 +9,19 @@ export default function SavedMovies() {
   const [isLoading, setIsLoading] = useState(false);
   const [savedMovies, setSavedMoives] = useState([]);
   const [savedFilteredMovies, setSavedFilteredMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [isInitial, setIsInitial] = useState(true);
   const [request, setRequest] = useState("");
-  const [shorts, setShorts] = useState(true);
+  const [shorts, setShorts] = useState(false);
   const [cardsUpdate, setCardsUpdate] = useState(0);
 
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     mainApi
       .getSavedMovies(localStorage.getItem("jwt"))
       .then((data) => {
-        setLoading(false);
-
+        setIsLoading(false);
         const userData = data.filter((movie) => {
           return movie.owner === currentUser._id;
         });
@@ -68,7 +66,6 @@ export default function SavedMovies() {
     });
 
     setSavedFilteredMovies(filteredCards);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shorts]);
 
   return (

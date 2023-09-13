@@ -68,8 +68,8 @@ export default function MoviesCardList({
                 : `${BASE_URL}${card.image.url}`;
               return (
                 <MoviesCard
-                  card={card}
                   key={cardId}
+                  card={card}
                   country={card.country}
                   director={card.director}
                   duration={card.duration}

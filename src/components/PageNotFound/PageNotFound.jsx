@@ -8,7 +8,7 @@ export default function PageNotFound({ onClickBack }) {
           <div className="PageNotFound__title">404</div>
           <div className="PageNotFound__subtitle">Страница не найдена</div>
         </div>
-        <button className="PageNotFound__link" onClick={onClickBack}>
+        <button className="PageNotFound__link cursor" onClick={onClickBack}>
           Назад
         </button>
       </div>

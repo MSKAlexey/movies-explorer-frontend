@@ -4,22 +4,20 @@ import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 export default function Profile({ logOut, onSubmit }) {
-  const { values, handleChange, resetForm, errors, isValid } =
-    useFormWithValidation();
+  const { values, handleChange, resetForm, isValid } = useFormWithValidation();
 
-  const setUserData = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   const isRequiredСondition =
     !isValid ||
-    (setUserData.name === values.name && setUserData.email === values.email);
+    (currentUser.name === values.name && currentUser.email === values.email);
 
   useEffect(() => {
-    if (setUserData) resetForm(setUserData, {}, true);
-  }, [setUserData, resetForm]);
+    if (currentUser) resetForm(currentUser, {}, true);
+  }, [currentUser, resetForm]);
 
   function handelSubmit(e) {
     e.preventDefault();
-    // debugger;
     onSubmit(values);
   }
 
@@ -28,7 +26,7 @@ export default function Profile({ logOut, onSubmit }) {
       <main className="Profile__container">
         <div className="Profile__top-container">
           <h1 className="Profile__title">{`Привет, ${
-            setUserData.name ?? ""
+            currentUser.name ?? ""
           }!`}</h1>
           <form className="Profile__form" onSubmit={handelSubmit}>
             <div className="Profile__input-container">
@@ -59,7 +57,7 @@ export default function Profile({ logOut, onSubmit }) {
             <div className="Profile__buttons-container">
               <button
                 className="Profile__edit-button cursor"
-                disabled={isRequiredСondition /* || isSubmit */}
+                disabled={isRequiredСondition}
               >
                 Редактировать
               </button>

@@ -5,7 +5,6 @@ import mainApi from "../../utils/MainApi";
 import { Link, useLocation } from "react-router-dom";
 
 export default function MoviesCard({
-  card,
   country,
   director,
   duration,

@@ -28,20 +28,20 @@ export default function App() {
 
   // проверка токена
   function tokenCheck() {
-    auth
-      .getContent()
-      .then(() => {
-        setLoggedIn(true);
-      })
-      .catch(console.log);
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      auth
+        .getContent()
+        .then(() => {
+          setLoggedIn(true);
+        })
+        .catch(console.log);
+    }
   }
 
   // проверка токена при ребуте страницы
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      tokenCheck();
-    }
+    tokenCheck();
   }, []);
 
   // открытие попапов

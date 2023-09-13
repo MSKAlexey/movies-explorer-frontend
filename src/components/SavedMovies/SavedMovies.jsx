@@ -11,7 +11,7 @@ export default function SavedMovies() {
   const [savedFilteredMovies, setSavedFilteredMovies] = useState([]);
   const [isInitial, setIsInitial] = useState(true);
   const [request, setRequest] = useState("");
-  const [shorts, setShorts] = useState(false);
+  const [shorts, setShorts] = useState(true);
   const [cardsUpdate, setCardsUpdate] = useState(0);
 
   const currentUser = useContext(CurrentUserContext);

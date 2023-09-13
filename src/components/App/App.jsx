@@ -179,18 +179,22 @@ export default function App() {
             <Route
               path="/sign-in"
               element={
-                <Login
-                  handelLoginSubmit={handelLoginSubmit}
-                />
+                !loggedIn ? (
+                  <Login handelLoginSubmit={handelLoginSubmit} />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
 
             <Route
               path="/sign-up"
               element={
-                <Register
-                  handelRegisterSubmit={handelRegisterSubmit}
-                />
+                !loggedIn ? (
+                  <Register handelRegisterSubmit={handelRegisterSubmit} />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
 

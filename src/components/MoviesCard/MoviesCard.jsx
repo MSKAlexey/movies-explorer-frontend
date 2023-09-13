@@ -82,7 +82,7 @@ export default function MoviesCard({
       return movie.movieId === movieId && movie.owner === currentUser._id;
     });
 
-    console.log(isSaved);
+    // console.log(isSaved);
 
     const currentMovie =
       savedMovies.find((movie) => {

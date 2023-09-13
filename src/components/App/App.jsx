@@ -8,13 +8,11 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
-// import { ProtectedRoute } from "../ProtectedRoute";
 import * as auth from "../../utils/Auth";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import MenuPopup from "../MenuPopup/MenuPopup";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import api from "../../utils/Api";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import mainApi from "../../utils/MainApi";
 
@@ -25,9 +23,7 @@ export default function App() {
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  // const [userData, setUserData] = useState({ email: "" });
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
-  // const [isSubmit, setIsSubmit] = useState(false);
   const [firstSubmit, setFirstSubmit] = useState(true);
 
   // проверка токена
@@ -95,7 +91,7 @@ export default function App() {
   useEffect(() => {
     // debugger
     if (loggedIn) {
-      Promise.all([api.getUserInfo()])
+      Promise.all([mainApi.getUserInfo()])
         .then(([data]) => {
           setLoggedIn(true);
           setCurrentUser(data);
@@ -211,13 +207,8 @@ export default function App() {
                   />
                   <Profile
                     logOut={logOut}
-                    // Submit={isSubmit}
                     onSubmit={handleUpdateUser}
                     onClickExit={handleClickToRedirectMainPage}
-                    // isOpen={isRegisterPopupOpen}
-                    // onClose={closeAllPopups}
-                    // name={"register"}
-                    // statusRegister={isInfoTolltip}
                   />
                 </>
               }

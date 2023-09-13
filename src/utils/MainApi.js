@@ -91,6 +91,17 @@ class MainApi {
       return this.deleteLike(cardId);
     }
   }
+
+  getUserInfo() {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}/users/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkStatusResponse);
+  }
 }
 const mainApi = new MainApi();
 export default mainApi;

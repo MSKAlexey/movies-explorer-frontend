@@ -63,7 +63,6 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
 
   useEffect(() => {
     setIsLoading(true);
-    debugger
     mainApi
       .getSavedMovies()
       .then((data) => {
@@ -98,8 +97,8 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
         <Preloader />
       ) : (
         <MoviesCardList
-          isInitial={isInitial}
           cards={fCards}
+          isInitial={isInitial}
           requestError={requestError}
           savedMovies={savedMovies}
         />

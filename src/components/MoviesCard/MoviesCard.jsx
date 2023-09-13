@@ -5,7 +5,7 @@ import mainApi from "../../utils/MainApi";
 import { Link, useLocation } from "react-router-dom";
 
 export default function MoviesCard({
-  fromSavedPage,
+  card,
   country,
   director,
   duration,
@@ -78,10 +78,12 @@ export default function MoviesCard({
   };
 
   useEffect(() => {
-    // debugger;
     const isSaved = savedMovies.some((movie) => {
+      // debugger;
       return movie.movieId === movieId && movie.owner === currentUser._id;
     });
+
+    console.log(isSaved);
 
     const currentMovie =
       savedMovies.find((movie) => {
@@ -115,7 +117,7 @@ export default function MoviesCard({
             className={`${
               location.pathname === "/movies"
                 ? cardLikeButtonClassName
-                : "MoviesCard__icon-close"
+                : "MoviesCard__icon-close cursor"
             }`}
             onClick={handleSaveBtn}
           ></button>

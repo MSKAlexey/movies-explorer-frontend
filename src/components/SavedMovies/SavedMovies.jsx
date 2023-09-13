@@ -19,7 +19,7 @@ export default function SavedMovies() {
   useEffect(() => {
     setIsLoading(true);
     mainApi
-      .getSavedMovies(localStorage.getItem("jwt"))
+      .getSavedMovies()
       .then((data) => {
         setIsLoading(false);
         const userData = data.filter((movie) => {

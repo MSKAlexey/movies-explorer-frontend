@@ -70,7 +70,6 @@ export default function MoviesCardList({
                 <MoviesCard
                   card={card}
                   key={cardId}
-                  fromSavedPage={fromSavedPage}
                   country={card.country}
                   director={card.director}
                   duration={card.duration}

@@ -1,0 +1,63 @@
+.Header_background-color_landing {
+  background: #073042;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header__logo {
+  padding: 0 0 0 0;
+  margin: 18px 0 0 14px;
+}
+
+.Header__logo-link {
+  min-width: 38px;
+  min-height: 38px;
+}
+
+.Header__user-email {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #ffffff;
+  padding: 0;
+  margin: 0 20px 0 0;
+}
+
+.Header__registet-link {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Header__logOut {
+  display: flex;
+  align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  .Header {
+    padding: 45px 0 20px;
+  }
+  .Header__logo {
+    margin: 18px 0 0 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Header__logo {
+    margin: 18px 0 0 70px;
+  }
+}

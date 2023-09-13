@@ -1,0 +1,127 @@
+.Profile__container {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  margin: 0 auto;
+  padding: 84px 0 50px 0;
+  gap: 378px;
+}
+
+.Profile__title {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+
+.Profile__form {
+  padding: 80px 0 0 0;
+}
+
+.Profile__input {
+  outline: none;
+  background: #202020;
+  border: none;
+  color: #fff;
+  text-align: right;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.Profile__placeholder {
+  color: #fff;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.Profile__input-container {
+  display: flex;
+}
+
+.Profile__input-container:first-child {
+  border-bottom: solid 1px #424242;
+  padding: 0 0 16px 0;
+}
+
+.Profile__input-container:last-child {
+  padding: 16px 0 0 0;
+}
+
+.Profile__buttons-container {
+  padding: 0;
+  display: grid;
+}
+
+.Profile__edit-button {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.Profile__exit-button {
+  color: #ee3465;
+  text-align: center;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  background: transparent;
+  padding: 16px 0 0 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .Profile__container {
+    width: 410px;
+    padding: 250px 0 50px 0;
+    gap: 212px;
+  }
+  .Profile__form {
+    padding: 96px 0 0 0;
+  }
+  .Profile__edit-button {
+    font-size: 13px;
+  }
+
+  .Profile__exit-button {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Profile__container {
+    width: 410px;
+    padding: 88px 0 50px 0;
+    gap: 220px;
+  }
+  .Profile__form {
+    padding: 124px 0 0 0;
+  }
+}

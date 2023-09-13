@@ -1,0 +1,140 @@
+.AboutMe__container {
+  padding: 140px 0 0 0;
+  margin: 0 auto;
+  width: 292px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.AboutMe__title {
+  font-size: 18px;
+  letter-spacing: -0.72px;
+  border-bottom: 1px solid #dadada;
+  padding: 0 0 30px 0;
+  margin: 0;
+}
+
+.AboutMe__photo {
+  width: 292px;
+  height: 352px;
+  border-radius: 10px;
+  padding: 0;
+  margin: 60px 0 0 0;
+}
+
+.AboutMe__subtitle {
+  font-size: 30px;
+  letter-spacing: -1.2px;
+  padding: 36px 0 0 0;
+  margin: 0;
+}
+
+.AboutMe__age {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 20px 0 0 0;
+  margin: 0;
+}
+
+.AboutMe__text {
+  font-size: 11px;
+  line-height: 16px;
+  padding: 20px 0 0 0;
+  margin: 0;
+}
+
+.AboutMe__git {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 40px 0 0 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 670px) {
+  .AboutMe__container {
+    width: 668px;
+    padding: 182px 0 0 0;
+  }
+  .AboutMe__title {
+    font-size: 22px;
+    padding: 0 0 22px 0;
+  }
+  .AboutMe__photo {
+    width: 255px;
+    height: 307px;
+    border-radius: 10px;
+    padding: 0;
+    margin: 68px 0 0 0;
+  }
+  .AboutMe__block-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .AboutMe__text-container {
+    width: 364px;
+    padding: 28px 0 0 0;
+  }
+  .AboutMe__subtitle {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+  }
+  .AboutMe__age {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .AboutMe__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .AboutMe__git {
+    padding: 86px 0 0 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .AboutMe__container {
+    width: 1140px;
+    padding: 0;
+  }
+  .AboutMe__title {
+    width: 1140px;
+    padding: 212px 0 24px 0;
+    font-size: 22px;
+    letter-spacing: -0.88px;
+  }
+  .AboutMe__subtitle {
+    padding: 0;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -2px;
+  }
+  .AboutMe__age {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 22px 0 0 0;
+  }
+  .AboutMe__text {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 24px 0 0 0;
+  }
+  .AboutMe__git {
+    gap: 16px;
+    padding: 102px 0 0 0;
+  }
+  .AboutMe__text-container {
+    width: 600px;
+    padding: 64px 0 0 0;
+  }
+  .AboutMe__photo {
+    width: 270px;
+    height: 327px;
+  }
+}

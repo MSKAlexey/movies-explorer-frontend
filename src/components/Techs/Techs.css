@@ -1,0 +1,117 @@
+.Techs__container {
+  width: 284px;
+  margin: 0 auto;
+  padding: 140px 0 0 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Techs__title-container {
+  margin: 0 auto;
+}
+
+.Techs__title {
+  font-size: 18px;
+  letter-spacing: -0.72px;
+  margin: 0;
+  padding: 0 0 26px 0;
+  border-bottom: 1px solid #000;
+}
+
+.Techs__subtitle {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: -1.2px;
+  margin: 0;
+  padding: 62px 0 0 0;
+}
+
+.Techs__text {
+  text-align: center;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: -0.44px;
+  padding: 24px 0 0 0;
+  margin: 0;
+}
+
+.Techs__table {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 84px);
+  gap: 12px;
+  padding: 50px 0 0 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.Techs__ctechnology {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: -0.48px;
+  border-radius: 10px;
+  background: #303030;
+  padding: 20px 0 20px 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 670px) {
+  .Techs__container {
+    width: 668px;
+    padding: 180px 0 0 0;
+  }
+  .Techs__title {
+    font-size: 22px;
+    letter-spacing: -0.88px;
+    padding: 0 0 24px 0;
+  }
+  .Techs__subtitle {
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -2px;
+    padding: 80px 0 0 0;
+  }
+  .Techs__text {
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+    width: 460px;
+    padding: 22px 0 0 0;
+    margin: 0 auto;
+  }
+  .Techs__table {
+    grid-template-columns: repeat(7, 84px);
+    gap: 10px;
+    padding: 84px 0 0 0;
+    margin: 0;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Techs__container {
+    width: 1140px;
+    padding: 210px 0 0 0;
+  }
+  .Techs__subtitle {
+    padding: 88px 0 0 0;
+  }
+  .Techs__text {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+    padding: 26px 0 0 0;
+  }
+  .Techs__ctechnology {
+    font-size: 14px;
+    letter-spacing: -0.56px;
+  }
+  .Techs__table {
+    gap: 16px;
+    padding: 102px 0 0 0;
+  }
+}

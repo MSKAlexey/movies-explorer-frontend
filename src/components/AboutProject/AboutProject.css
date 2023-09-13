@@ -1,0 +1,135 @@
+.AboutProject__container {
+  width: 284px;
+  margin: 0 auto;
+  padding: 72px 0 0 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-style: normal;
+  line-height: normal;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.AboutProject__title {
+  font-size: 18px;
+  letter-spacing: -0.72px;
+  padding: 0 0 28px 0;
+  margin: 0;
+  border-bottom: 1px solid #424242;
+}
+
+.AboutProject__table {
+  display: grid;
+}
+
+.AboutProject__subtitle {
+  font-size: 18px;
+  letter-spacing: -0.72px;
+  margin: 0;
+  padding: 60px 0 0 0;
+}
+
+.AboutProject__text {
+  line-height: 16px;
+  margin: 0;
+  padding: 16px 0 0 0;
+}
+
+.AboutProject__period {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  margin: 0;
+  padding: 60px 0 0 0;
+  text-align: center;
+  grid-template-rows: 35px 24px;
+  list-style: none;
+}
+
+.AboutProject__backEnd_time_position,
+.AboutProject__frontEnd_time_position {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.AboutProject__backEnd-name_name_position,
+.AboutProject__frontEnd-name_name_position {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.AboutProject__backEnd {
+  color: #000;
+  background: #3ddc84;
+}
+
+.AboutProject__frontEnd {
+  flex-shrink: 0;
+  background: #303030;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.AboutProject__frontEnd-name {
+  color: #a0a0a0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+@media screen and (min-width: 680px) {
+  .AboutProject__container {
+    width: 668px;
+    padding: 90px 0 0 0;
+  }
+  .AboutProject__title {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.88px;
+    padding: 0 0 24px 0;
+  }
+  .AboutProject__subtitle {
+    font-size: 20px;
+    letter-spacing: -0.8px;
+  }
+  .AboutProject__table {
+    grid-template-columns: repeat(2, 324px);
+    padding: 10px 0 0 0;
+    gap: 26px;
+  }
+  .AboutProject__text {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 24px 0 0 0;
+  }
+  .AboutProject__period {
+    grid-template-columns: 140px 1fr;
+    font-size: 14px;
+    padding: 91px 0 0 0;
+    grid-template-rows: 35px 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .AboutProject__container {
+    width: 1140px;
+    padding: 102px 0 0 0;
+  }
+  .AboutProject__table {
+    grid-template-columns: repeat(2, 550px);
+    gap: 40px;
+  }
+  .AboutProject__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .AboutProject__period {
+    grid-template-columns: 228px 1fr;
+    padding: 112px 0 0 0;
+  }
+}

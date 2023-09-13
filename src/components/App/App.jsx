@@ -181,7 +181,6 @@ export default function App() {
               element={
                 <Login
                   handelLoginSubmit={handelLoginSubmit}
-                  // isSubmit={isSubmit}
                 />
               }
             />
@@ -191,7 +190,6 @@ export default function App() {
               element={
                 <Register
                   handelRegisterSubmit={handelRegisterSubmit}
-                  // isSubmit={isSubmit}
                 />
               }
             />

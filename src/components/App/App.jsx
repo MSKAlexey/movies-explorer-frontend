@@ -37,7 +37,7 @@ export default function App() {
   const handleHeaderDisableToPages = (routes) =>
     routes.some((route) => route === currentLocation.pathname);
 
-    console.log(loggedIn)
+  console.log(loggedIn);
   // проверка токена при ребуте страницы
   useEffect(() => {
     tokenCheck();
@@ -73,6 +73,7 @@ export default function App() {
       .then(() => {
         setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);
+        handelLoginSubmit({ email, password });
       })
       .catch((err) => {
         setIsInfoTolltip(false);

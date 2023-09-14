@@ -54,7 +54,6 @@ export default function Register({ handelRegisterSubmit }) {
                 type="email"
                 name="email"
                 minLength="5"
-                maxLength="15"
                 required
                 onChange={handleChange}
               />

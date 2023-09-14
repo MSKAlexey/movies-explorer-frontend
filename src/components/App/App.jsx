@@ -37,6 +37,12 @@ export default function App() {
   const handleHeaderDisableToPages = (routes) =>
     routes.some((route) => route === currentLocation.pathname);
 
+    console.log(loggedIn)
+  // проверка токена при ребуте страницы
+  useEffect(() => {
+    tokenCheck();
+  }, []);
+
   // проверка токена
   function tokenCheck() {
     const jwt = localStorage.getItem("jwt");
@@ -49,11 +55,6 @@ export default function App() {
         .catch(console.log);
     }
   }
-
-  // проверка токена при ребуте страницы
-  useEffect(() => {
-    tokenCheck();
-  }, []);
 
   // открытие попапов
   function handleMenuClick() {
@@ -72,7 +73,6 @@ export default function App() {
       .then(() => {
         setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);
-        navigate("/sign-in");
       })
       .catch((err) => {
         setIsInfoTolltip(false);
@@ -98,12 +98,12 @@ export default function App() {
         console.log(err);
       });
   }
-  // хук для начальной загрузки карточек с сервера и получение имя и профессии пользователя профиля. проверка на присутствие jwt токена в локальном хранилище
+  // хук для начальной загрузки данных профиля. проверка на присутствие jwt токена в локальном хранилище
   useEffect(() => {
-    // debugger
     if (loggedIn) {
-      Promise.all([mainApi.getUserInfo()])
-        .then(([data]) => {
+      mainApi
+        .getUserInfo()
+        .then((data) => {
           setLoggedIn(true);
           setCurrentUser(data);
         })

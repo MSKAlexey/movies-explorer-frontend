@@ -7,7 +7,13 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import * as auth from "../../utils/Auth";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import MenuPopup from "../MenuPopup/MenuPopup";
@@ -15,16 +21,21 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import mainApi from "../../utils/MainApi";
+import ProtectedRoutes from "../ProtectedRoute";
 
 export default function App() {
   const navigate = useNavigate();
   const handleClickToRedirectMainPage = () => navigate("/");
+  const currentLocation = useLocation();
   const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [firstSubmit, setFirstSubmit] = useState(true);
+  const headerDisableToPages = ["/", "/movies", "/saved-movies", "/profile"];
+  const handleHeaderDisableToPages = (routes) =>
+    routes.some((route) => route === currentLocation.pathname);
 
   // проверка токена
   function tokenCheck() {
@@ -106,13 +117,11 @@ export default function App() {
     setLoggedIn(false);
     localStorage.clear();
     navigate("/");
-    // setUserData({});
     setFirstSubmit(true);
   }
 
   // субмит формы редактирования данных пользователя
   function handleUpdateUser(data) {
-    // debugger
     mainApi
       .changeUserInfo(data)
       .then((data) => {
@@ -127,51 +136,53 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="App__container">
+          {handleHeaderDisableToPages(headerDisableToPages) && (
+            <Header
+              loggedIn={loggedIn}
+              isOpenMenu={isMenuPopup}
+              onClickMenu={handleMenuClick}
+            />
+          )}
           <Routes>
+            <Route element={<ProtectedRoutes loggedIn={loggedIn} />}>
+              <Route
+                path="/movies"
+                element={
+                  <>
+                    <Movies
+                      firstSubmit={firstSubmit}
+                      setFirstSubmit={setFirstSubmit}
+                    />
+                  </>
+                }
+              />
+              <Route
+                path="/saved-movies"
+                element={
+                  <>
+                    <SavedMovies />
+                  </>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <>
+                    <Profile
+                      logOut={logOut}
+                      onSubmit={handleUpdateUser}
+                      onClickExit={handleClickToRedirectMainPage}
+                    />
+                  </>
+                }
+              />
+            </Route>
+
             <Route
               path="/"
               element={
                 <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isMenuPopup}
-                    onClickMenu={handleMenuClick}
-                  />
                   <Main />
-                  <Footer />
-                </>
-              }
-            />
-
-            <Route
-              path="/movies"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isMenuPopup}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <Movies
-                    firstSubmit={firstSubmit}
-                    setFirstSubmit={setFirstSubmit}
-                  />
-                  <Footer />
-                </>
-              }
-            />
-
-            <Route
-              path="/saved-movies"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isMenuPopup}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <SavedMovies />
-                  <Footer />
                 </>
               }
             />
@@ -186,7 +197,6 @@ export default function App() {
                 )
               }
             />
-
             <Route
               path="/sign-up"
               element={
@@ -197,34 +207,15 @@ export default function App() {
                 )
               }
             />
-
-            <Route
-              path="/profile"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isMenuPopup}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <Profile
-                    logOut={logOut}
-                    onSubmit={handleUpdateUser}
-                    onClickExit={handleClickToRedirectMainPage}
-                  />
-                </>
-              }
-            />
-
             <Route
               path="/pagenotfound"
               element={
                 <PageNotFound onClickBack={handleClickToRedirectMainPage} />
               }
             />
-
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          {handleHeaderDisableToPages(headerDisableToPages) && <Footer />}
         </div>
 
         <MenuPopup onClose={closeAllPopups} isOpen={isMenuPopup} />

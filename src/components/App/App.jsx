@@ -21,7 +21,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import mainApi from "../../utils/MainApi";
-import ProtectedRoutes from "../ProtectedRoute";
+import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
 
 export default function App() {
   const navigate = useNavigate();

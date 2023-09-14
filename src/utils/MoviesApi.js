@@ -9,13 +9,11 @@ class MoviesApi {
   }
 
   getMovies() {
-    // const token = localStorage.getItem("jwt");
     return fetch(`${this._url}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
       },
     }).then(this._checkStatusResponse);
   }

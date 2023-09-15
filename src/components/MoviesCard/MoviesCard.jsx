@@ -79,7 +79,7 @@ export default function MoviesCard({
   useEffect(() => {
     const isSaved = savedMovies.some((movie) => {
       // debugger;
-      return movie.movieId === movieId && movie.owner === currentUser._id;
+      return movie.movieId == movieId && movie.owner === currentUser._id;
     });
 
     const currentMovie =

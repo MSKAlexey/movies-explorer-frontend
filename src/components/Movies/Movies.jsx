@@ -21,6 +21,7 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
   const [requestError, setRequestError] = useState(false);
   const [isInitial, setIsInitial] = useState(true);
   const [savedMovies, setSavedMoives] = useState([""]);
+  const [cardsUpdate, setCardsUpdate] = useState(0);
 
   const filterCards = () => {
     return cards.filter((element) => {
@@ -84,6 +85,8 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
     setFCards(filterCards());
   }, [shorts]);
 
+  // console.log(savedMovies)
+
   return (
     <main className="Movies">
       <SearchForm
@@ -101,6 +104,8 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
           isInitial={isInitial}
           requestError={requestError}
           savedMovies={savedMovies}
+          cardsUpdate={cardsUpdate}
+          setCardsUpdate={setCardsUpdate}
         />
       )}
     </main>

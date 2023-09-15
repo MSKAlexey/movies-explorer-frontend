@@ -97,6 +97,8 @@ export default function MoviesCard({
     return hours + "ч " + minutes + "м";
   }
 
+  console.log(isSavedState)
+
   const cardLikeButtonClassName = `MoviesCard__icon cursor ${
     isSavedState && "MoviesCard__icon_active"
   }`;

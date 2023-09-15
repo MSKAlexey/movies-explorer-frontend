@@ -37,7 +37,7 @@ export default function App() {
   const handleHeaderDisableToPages = (routes) =>
     routes.some((route) => route === currentLocation.pathname);
 
-  console.log(loggedIn);
+  // console.log(loggedIn);
   // проверка токена при ребуте страницы
   useEffect(() => {
     tokenCheck();

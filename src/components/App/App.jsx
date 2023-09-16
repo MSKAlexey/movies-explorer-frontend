@@ -30,31 +30,45 @@ export default function App() {
   const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(
+    localStorage.getItem("loggedIn") === "true"
+  );
+
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [firstSubmit, setFirstSubmit] = useState(true);
   const headerDisableToPages = ["/", "/movies", "/saved-movies", "/profile"];
   const handleHeaderDisableToPages = (routes) =>
     routes.some((route) => route === currentLocation.pathname);
 
-  // console.log(loggedIn);
   // проверка токена при ребуте страницы
   useEffect(() => {
-    tokenCheck();
-  }, []);
-
-  // проверка токена
-  function tokenCheck() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       auth
         .getContent()
         .then(() => {
           setLoggedIn(true);
+          localStorage.setItem("loggedIn", loggedIn);
         })
         .catch(console.log);
     }
-  }
+  }, [loggedIn]);
+
+  // проверка токена
+  // function tokenCheck() {
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (jwt) {
+  //     auth
+  //       .getContent()
+  //       .then(() => {
+  //         setLoggedIn(true);
+  //       })
+  //       .catch(console.log);
+  //   }
+  // }
+
+  // console.log(loggedIn);
 
   // открытие попапов
   function handleMenuClick() {
@@ -149,22 +163,13 @@ export default function App() {
               <Route
                 path="/movies"
                 element={
-                  <>
-                    <Movies
-                      firstSubmit={firstSubmit}
-                      setFirstSubmit={setFirstSubmit}
-                    />
-                  </>
+                  <Movies
+                    firstSubmit={firstSubmit}
+                    setFirstSubmit={setFirstSubmit}
+                  />
                 }
               />
-              <Route
-                path="/saved-movies"
-                element={
-                  <>
-                    <SavedMovies />
-                  </>
-                }
-              />
+              <Route path="/saved-movies" element={<SavedMovies />} />
               <Route
                 path="/profile"
                 element={
@@ -179,14 +184,7 @@ export default function App() {
               />
             </Route>
 
-            <Route
-              path="/"
-              element={
-                <>
-                  <Main />
-                </>
-              }
-            />
+            <Route path="/" element={<Main />} />
 
             <Route
               path="/sign-in"

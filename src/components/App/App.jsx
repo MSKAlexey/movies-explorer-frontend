@@ -144,7 +144,11 @@ export default function App() {
         setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);
       })
-      .catch(console.log);
+      .catch((err) => {
+        setIsRegisterPopupOpen(true);
+        setIsInfoTolltip(false);
+        console.log(err);
+      });
   }
 
   return (
@@ -177,7 +181,7 @@ export default function App() {
                     <Profile
                       logOut={logOut}
                       onSubmit={handleUpdateUser}
-                      onClickExit={handleClickToRedirectMainPage}
+                      // onClickExit={handleClickToRedirectMainPage}
                     />
                   </>
                 }

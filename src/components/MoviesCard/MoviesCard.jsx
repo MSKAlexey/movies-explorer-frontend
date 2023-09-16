@@ -84,20 +84,21 @@ export default function MoviesCard({
 
     const currentMovie =
       savedMovies.find((movie) => {
-        return movie.movieId === movieId && movie.owner === currentUser._id;
+        return movie.movieId == movieId && movie.owner === currentUser._id;
       }) || "";
 
     setIsSavedState(isSaved);
     setCurrentMovieId(currentMovie._id);
+    // console.log(currentMovie);
   }, [savedMovies]);
+
+  // console.log(savedMovies);
 
   function convert(mins) {
     const hours = Math.floor(mins / 60);
     const minutes = mins % 60;
     return hours + "ч " + minutes + "м";
   }
-
-  console.log(isSavedState)
 
   const cardLikeButtonClassName = `MoviesCard__icon cursor ${
     isSavedState && "MoviesCard__icon_active"

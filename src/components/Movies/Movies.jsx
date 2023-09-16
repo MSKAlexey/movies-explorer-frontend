@@ -20,7 +20,7 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
   );
   const [requestError, setRequestError] = useState(false);
   const [isInitial, setIsInitial] = useState(true);
-  const [savedMovies, setSavedMoives] = useState([""]);
+  const [savedMovies, setSavedMoives] = useState([]);
   const [cardsUpdate, setCardsUpdate] = useState(0);
 
   const filterCards = () => {
@@ -85,7 +85,7 @@ export default function Movies({ firstSubmit, setFirstSubmit }) {
     setFCards(filterCards());
   }, [shorts]);
 
-  // console.log(savedMovies)
+  // console.log(savedMovies);
 
   return (
     <main className="Movies">

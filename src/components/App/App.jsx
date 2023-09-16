@@ -214,7 +214,7 @@ export default function App() {
                 <PageNotFound onClickBack={handleClickToRedirectMainPage} />
               }
             />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/pagenotfound" replace />} />
           </Routes>
           {handleHeaderDisableToPages(headerDisableToPages) && <Footer />}
         </div>

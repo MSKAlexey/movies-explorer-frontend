@@ -80,7 +80,13 @@
   border: none;
   background: transparent;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.Profile__edit-button:disabled {
+  color: #424242;
+  cursor: no-drop;
 }
 
 .Profile__exit-button {
@@ -93,8 +99,9 @@
   line-height: normal;
   border: none;
   background: transparent;
-  padding: 16px 0 0 0;
-  margin: 0;
+  padding: 0;
+  margin: 16px auto 0;
+  width: 130px;
 }
 
 @media screen and (min-width: 768px) {
@@ -122,6 +129,11 @@
     gap: 220px;
   }
   .Profile__form {
-    padding: 124px 0 0 0;
+    padding: 120px 0 0 0;
+    display: grid;
+    gap: 18px;
+  }
+  .Profile__buttons-container {
+    padding: 202px 0 0 0;
   }
 }

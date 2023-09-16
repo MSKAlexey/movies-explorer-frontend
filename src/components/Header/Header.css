@@ -57,6 +57,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .Header {
+    padding: 0;
+  }
   .Header__logo {
     margin: 18px 0 0 70px;
   }

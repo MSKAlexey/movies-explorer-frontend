@@ -1,30 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 import logo from "../../images/logo.svg";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-export default function Register({
-  handelRegisterSubmit /* , errorMessage  */,
-}) {
-  const [formValue, setFormValue] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+export default function Register({ handelRegisterSubmit }) {
+  const { values, handleChange, resetForm, errors, isValid } =
+    useFormWithValidation();
 
-  const { name, email, password } = formValue;
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValue({
-      ...formValue,
-      [name]: value,
-    });
-  };
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   function handelSubmit(e) {
     e.preventDefault();
-    handelRegisterSubmit({ name, email, password });
+    handelRegisterSubmit(values);
   }
 
   return (
@@ -41,6 +31,7 @@ export default function Register({
               <span className="Register__title-input">Имя</span>
               <input
                 className="Register__input"
+                value={values.name ?? ""}
                 placeholder="Ваше имя"
                 type="text"
                 name="name"
@@ -50,7 +41,7 @@ export default function Register({
                 onChange={handleChange}
               />
               <span id="input-name-error" className="Register__error">
-                {/* errorMessage */}
+                {errors.name ?? ""}
               </span>
             </div>
 
@@ -59,15 +50,15 @@ export default function Register({
               <input
                 className="Register__input"
                 placeholder="pochta@yandex.ru|"
+                value={values.email ?? ""}
                 type="email"
                 name="email"
                 minLength="5"
-                maxLength="15"
                 required
                 onChange={handleChange}
               />
               <span id="input-name-error" className="Register__error">
-                {/* {errorMessage} */}
+                {errors.email ?? ""}
               </span>
             </div>
             <div className="Register__form-input">
@@ -75,6 +66,7 @@ export default function Register({
               <input
                 className="Register__input"
                 placeholder="••••••••••"
+                value={values.password || ""}
                 type="password"
                 name="password"
                 minLength="6"
@@ -83,7 +75,7 @@ export default function Register({
                 onChange={handleChange}
               />
               <span id="input-name-error" className="Register__error">
-                {/* errorMessage */}
+                {errors.password ?? ""}
               </span>
             </div>
           </div>
@@ -92,6 +84,7 @@ export default function Register({
               type="submit"
               name="button"
               className="Register__button cursor"
+              disabled={!isValid}
             >
               {"Зарегистрироваться"}
             </button>

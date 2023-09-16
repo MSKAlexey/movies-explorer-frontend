@@ -9,7 +9,7 @@
   margin: 0;
 }
 
-.Navigation__list_state_close {
+.Navigation__list {
   visibility: hidden;
 }
 
@@ -56,7 +56,7 @@
   margin: 0 14px 0 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
   .Navigation__menu-container {
     font-size: 12px;
     line-height: 16px;
@@ -64,6 +64,9 @@
   .Navigation__menu {
     background-size: 44px 44px;
     right: 30px;
+  }
+  .Navigation__list {
+    visibility: visible;
   }
   .Navigation__link_sign-up {
     padding: 0;
@@ -83,9 +86,6 @@
   }
   .Navigation__menu-container {
     padding: 12px 54px 0 0;
-  }
-  .Navigation__list_state_close {
-    visibility: visible;
   }
   .Navigation__menu {
     visibility: hidden;

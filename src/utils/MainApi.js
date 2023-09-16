@@ -1,7 +1,5 @@
-class Api {
+class MainApi {
   constructor() {
-    // this._url = 'https://api.alexey.nomoredomains.xyz';
-    // this._url = "http://localhost:3000";
     this._url = "https://api.alexey.nomoreparties.co";
   }
 
@@ -11,56 +9,46 @@ class Api {
     }
     return Promise.reject(`Произошла ошибка`);
   }
-  
-  getMovies() {
+
+  getSavedMovies = () => {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/movies`, {
       method: "GET",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     }).then(this._checkStatusResponse);
-  }
+  };
 
-  addCard({ name, link }) {
+  saveMovie = (movie) => {
     const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}/movies`, {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        name: name,
-        link: link,
-      }),
+      body: JSON.stringify(movie),
     }).then(this._checkStatusResponse);
-  }
+  };
 
-  deleteCard(cardId) {
+  deleteMovie = (id) => {
     const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/cards/${cardId}`, {
+    return fetch(`${this._url}/movies/${id}`, {
       method: "DELETE",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     }).then(this._checkStatusResponse);
-  }
+  };
 
-  getUserInfo() {
-    const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/users/me`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then(this._checkStatusResponse);
-  }
-
-  changeUserInfo(data) {
+  changeUserInfo({ name, email }) {
+    // debugger;
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
@@ -68,24 +56,7 @@ class Api {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        name: data.name,
-        about: data.about,
-      }),
-    }).then(this._checkStatusResponse);
-  }
-
-  changeUserAvatar(link) {
-    const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/users/me/avatar`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        avatar: link,
-      }),
+      body: JSON.stringify({ name, email }),
     }).then(this._checkStatusResponse);
   }
 
@@ -120,6 +91,17 @@ class Api {
       return this.deleteLike(cardId);
     }
   }
+
+  getUserInfo() {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}/users/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkStatusResponse);
+  }
 }
-const api = new Api();
-export default api;
+const mainApi = new MainApi();
+export default mainApi;

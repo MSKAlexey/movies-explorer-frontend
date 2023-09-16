@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -7,54 +7,68 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
-import { ProtectedRoute } from "../ProtectedRoute";
-// import api from "../../utils/Api";
+import {
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import * as auth from "../../utils/Auth";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import MenuPopup from "../MenuPopup/MenuPopup";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import mainApi from "../../utils/MainApi";
+import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
 
 export default function App() {
-  const handleClickToBack = () => navigate("/");
-  const handleClickToExitProfile = () => navigate("/");
+  const navigate = useNavigate();
+  const handleClickToRedirectMainPage = () => navigate("/");
+  const currentLocation = useLocation();
   const [isMenuPopup, setIsMenuPopup] = useState(false);
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [movies, setMovies] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
-  // const [loggedIn, setLoggedIn] = useState(true);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  // const [isOpenMenu, setIsOpenMenu] = useState(true);
-  const navigate = useNavigate();
-  const [userData, setUserData] = useState({ email: "" });
-  // const [like, isLiked] = React.useState(false);
-  const [like, isLiked] = React.useState(true);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(
+    localStorage.getItem("loggedIn") === "true"
+  );
 
-  const handleLogin = (email) => {
-    setLoggedIn(true);
-    setUserData(email);
-  };
+  const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
+  const [firstSubmit, setFirstSubmit] = useState(true);
+  const headerDisableToPages = ["/", "/movies", "/saved-movies", "/profile"];
+  const handleHeaderDisableToPages = (routes) =>
+    routes.some((route) => route === currentLocation.pathname);
 
-  // проверка токена
-  function tokenCheck() {
+  // проверка токена при ребуте страницы
+  useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       auth
         .getContent()
-        .then((user) => {
-          handleLogin(user.email);
-          navigate("/");
+        .then(() => {
+          setLoggedIn(true);
+          localStorage.setItem("loggedIn", loggedIn);
         })
         .catch(console.log);
     }
-  }
+  }, [loggedIn]);
 
-  // проверка токена при ребуте страницы
-  useEffect(() => {
-    tokenCheck();
-  }, []);
+  // проверка токена
+  // function tokenCheck() {
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (jwt) {
+  //     auth
+  //       .getContent()
+  //       .then(() => {
+  //         setLoggedIn(true);
+  //       })
+  //       .catch(console.log);
+  //   }
+  // }
+
+  // console.log(loggedIn);
 
   // открытие попапов
   function handleMenuClick() {
@@ -63,6 +77,7 @@ export default function App() {
   // закрытие попапов
   function closeAllPopups() {
     setIsMenuPopup(false);
+    setIsRegisterPopupOpen(false);
   }
 
   // субмит формы регистрации
@@ -70,14 +85,15 @@ export default function App() {
     auth
       .register({ name, email, password })
       .then(() => {
-        // setIsRegisterPopupOpen(true);
+        setIsRegisterPopupOpen(true);
         setIsInfoTolltip(true);
-        navigate("/sign-in");
+        handelLoginSubmit({ email, password });
       })
       .catch((err) => {
         setIsInfoTolltip(false);
         console.log(err);
-      });
+      })
+      .finally(setIsRegisterPopupOpen(true));
   }
 
   // субмит формы входа
@@ -87,123 +103,132 @@ export default function App() {
       .then((data) => {
         if (data) {
           localStorage.setItem("jwt", data.token);
-          handleLogin(email);
-          navigate("/main");
+          setLoggedIn(true);
+          navigate("/movies");
         }
       })
       .catch((err) => {
         setIsInfoTolltip(false);
+        setIsRegisterPopupOpen(true);
         console.log(err);
       });
   }
-  // хук для начальной загрузки карточек с сервера и получение имя и профессии пользователя профиля. проверка на присутствие jwt токена в локальном хранилище
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     Promise.all([api.getUserInfo(), api.getMovies()])
-  //       .then(([data, movie]) => {
-  //         // debugger;
-  //         setCurrentUser(data);
-  //         setMovies(movie);
-  //       })
-  //       .catch(console.log);
-  //   }
-  // }, [loggedIn]);
+  // хук для начальной загрузки данных профиля. проверка на присутствие jwt токена в локальном хранилище
+  useEffect(() => {
+    if (loggedIn) {
+      mainApi
+        .getUserInfo()
+        .then((data) => {
+          setLoggedIn(true);
+          setCurrentUser(data);
+        })
+        .catch(console.log);
+    }
+  }, [loggedIn]);
 
-  // удаляем jwt токен из локального хранилища, выходим из профиля и переходим на главную страницу
+  // удаляем jwt токен из локального хранилища, выходим из профиля, очищаем данные пользователя
+  // и переходим на главную страницу
   function logOut() {
     setLoggedIn(false);
-    localStorage.removeItem("jwt");
+    localStorage.clear();
     navigate("/");
+    setFirstSubmit(true);
+  }
+
+  // субмит формы редактирования данных пользователя
+  function handleUpdateUser(data) {
+    mainApi
+      .changeUserInfo(data)
+      .then((data) => {
+        setCurrentUser(data);
+        setIsRegisterPopupOpen(true);
+        setIsInfoTolltip(true);
+      })
+      .catch((err) => {
+        setIsRegisterPopupOpen(true);
+        setIsInfoTolltip(false);
+        console.log(err);
+      });
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="App__container">
+          {handleHeaderDisableToPages(headerDisableToPages) && (
+            <Header
+              loggedIn={loggedIn}
+              isOpenMenu={isMenuPopup}
+              onClickMenu={handleMenuClick}
+            />
+          )}
           <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
-                    onClickMenu={handleMenuClick}
+            <Route element={<ProtectedRoutes loggedIn={loggedIn} />}>
+              <Route
+                path="/movies"
+                element={
+                  <Movies
+                    firstSubmit={firstSubmit}
+                    setFirstSubmit={setFirstSubmit}
                   />
-                  <Main />
-                  <Footer />
-                </>
-              }
-            />
+                }
+              />
+              <Route path="/saved-movies" element={<SavedMovies />} />
+              <Route
+                path="/profile"
+                element={
+                  <>
+                    <Profile
+                      logOut={logOut}
+                      onSubmit={handleUpdateUser}
+                      // onClickExit={handleClickToRedirectMainPage}
+                    />
+                  </>
+                }
+              />
+            </Route>
 
-            <Route
-              path="/movies"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <Movies like={like} />
-                  <Footer />
-                </>
-              }
-            />
-
-            <Route
-              path="/saved-movies"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <SavedMovies like={like} />
-                  <Footer />
-                </>
-              }
-            />
+            <Route path="/" element={<Main />} />
 
             <Route
               path="/sign-in"
-              element={<Login handelLoginSubmit={handelLoginSubmit} />}
-            />
-
-            <Route
-              path="/sign-up"
-              element={<Register handelRegisterSubmit={handelRegisterSubmit} />}
-            />
-
-            <Route
-              path="/profile"
               element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    isOpenMenu={isOpenMenu}
-                    onClickMenu={handleMenuClick}
-                  />
-                  <Profile
-                    logOut={logOut}
-                    userData={userData}
-                    onClickExit={handleClickToExitProfile}
-                  />
-                </>
+                !loggedIn ? (
+                  <Login handelLoginSubmit={handelLoginSubmit} />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
-
             <Route
-              path="/not"
-              element={<PageNotFound onClickBack={handleClickToBack} />}
+              path="/sign-up"
+              element={
+                !loggedIn ? (
+                  <Register handelRegisterSubmit={handelRegisterSubmit} />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
             />
-
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route
+              path="/pagenotfound"
+              element={
+                <PageNotFound onClickBack={handleClickToRedirectMainPage} />
+              }
+            />
+            <Route path="*" element={<Navigate to="/pagenotfound" replace />} />
           </Routes>
+          {handleHeaderDisableToPages(headerDisableToPages) && <Footer />}
         </div>
 
         <MenuPopup onClose={closeAllPopups} isOpen={isMenuPopup} />
+
+        <InfoTooltip
+          isOpen={isRegisterPopupOpen}
+          onClose={closeAllPopups}
+          name={"register"}
+          statusRegister={isInfoTolltip}
+        />
       </div>
     </CurrentUserContext.Provider>
   );

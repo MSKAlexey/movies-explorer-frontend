@@ -32,6 +32,14 @@
   border: none;
 }
 
+.Login__button:disabled {
+  background-color: #8b8b8b;
+}
+
+.Login__button:disabled {
+  cursor: no-drop;
+}
+
 .Login__form {
   padding: 80px 0 0 0;
   display: grid;
@@ -90,8 +98,8 @@
   font-family: "Inter", "Arial", "Helvetica", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 10px;
+  line-height: normal;
   color: red;
   display: block;
   margin: 0;
@@ -114,6 +122,7 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
+  width: 260px;
 }
 
 .Login__logo-link {
@@ -144,6 +153,9 @@
   }
   .Login__link {
     font-size: 14px;
+  }
+  .Login__form-input {
+    width: 396px;
   }
 }
 
